@@ -1,0 +1,67 @@
+.fadeIn {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.fadeOut {
+    animation: fadeOut 0.8s ease forwards;
+}
+
+.slideUp {
+    animation: slideUp 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes irFora {
+    0% {
+        transform: translateY(30vw);
+    }
+
+    100% {
+        transform: translateY(30vw);
+    }
+}
+
+@keyframes irForaCima {
+    0% {
+        transform: translateY(-20vw);
+    }
+
+    100% {
+        transform: translateY(-20vw);
+    }
+}

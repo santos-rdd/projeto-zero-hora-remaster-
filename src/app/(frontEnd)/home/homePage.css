@@ -1,0 +1,117 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    padding: 1rem;
+    box-sizing: border-box;
+    align-items: center;
+
+    justify-content: center;
+}
+
+.dashboardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 1.2rem;
+}
+
+.dashboardHeader h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000;
+
+    margin-right: 50px;
+}
+
+.headerButtons {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.btnIcon {
+    width: 35px;
+    height: 35px;
+    border: none;
+
+    border-radius: 50%;
+    background: #e4e4e4;
+    cursor: pointer;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
+}
+
+.carouselSection {
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+    display: flex;
+
+    gap: 1rem;
+    padding: 0.5rem 0;
+    scroll-snap-type: x mandatory;
+
+    width: 100%;
+    height: 150px;
+    background-color: none;
+
+    margin-top: 50px;
+    flex-direction: row;
+    scrollbar-width: thin;
+    flex-wrap: nowrap;
+}
+
+.carouselSection::-webkit-scrollbar {
+    display: none;
+}
+
+.carouselSection>* {
+    flex: 0 0 auto;
+}
+
+.pzin {
+    position: absolute;
+    top: 280px;
+    left: 20px;
+}
+
+.carouselSection2 {
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+
+    gap: 1rem;
+    padding: 0.5rem 0;
+    scroll-snap-type: x mandatory;
+
+    width: 100%;
+    height: 150px;
+
+    flex-direction: row;
+    scrollbar-width: thin;
+    flex-wrap: nowrap;
+
+    margin-top: 10px;
+    padding-bottom: 240px;
+}
+
+.carouselSection2::-webkit-scrollbar {
+    display: none;
+}
+
+.carouselSection2>* {
+    flex: 0 0 auto;
+}
+
+
+.pzin2 {
+    position: absolute;
+    top: 460px;
+    left: 20px;
+}

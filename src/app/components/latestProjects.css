@@ -1,0 +1,116 @@
+.cardTwo {
+    width: 200px;
+    height: 180px;
+    background-color: black;
+
+    border-radius: 20px;
+    display: flex;
+
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    font-family: Arial, sans-serif;
+    gap: 5px;
+    position: relative;
+
+}
+
+.cardTwo span {
+    position: absolute;
+    top: 20px;
+    color: white;
+
+    left: 20px;
+    font-size: 1.0rem;
+}
+
+.cardTwo p {
+    position: absolute;
+    top: 150px;
+    color: white;
+
+    left: 22px;
+    font-size: 0.5rem;
+    letter-spacing: 4.2px;
+
+}
+
+.cardHeaderTwo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardIconTwo {
+    width: 24px;
+    height: 24px;
+}
+
+.cardMenuTwo {
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.cardContentTwo p {
+    font-size: 0.6rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.cardFooterTwo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding-right: 10px;
+    margin-top: 40px;
+}
+
+.cardFooterTwo {
+    font-size: 0.5rem;
+    padding-top: 8px;
+}
+
+.footerIconTwo {
+    width: 100px;
+    height: 100px;
+}
+
+.okTwo {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+
+    border-radius: 100%;
+    border: 1px solid black;
+    top: 25px;
+    left: 25px;
+}
+
+.radio {
+    width: 30px;
+    height: 30px;
+    background-color: none;
+
+    border: 3px solid white;
+    position: absolute;
+    border-radius: 100%;
+
+    right: 15px;
+    top: 15px;
+}
+
+.pedidos {
+    position: absolute;
+    font-size: 0.8rem;
+    white-space: wrap;
+
+    width: 32%;
+    right: 20px;
+    color: white;
+
+    border-bottom: 3px solid white;
+    padding-bottom: 12px;
+}

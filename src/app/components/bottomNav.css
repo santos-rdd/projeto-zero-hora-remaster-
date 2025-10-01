@@ -1,0 +1,59 @@
+.bottomDiv {
+    background-color: black;
+    height: 12vh;
+    position: fixed;
+
+    bottom: 0;
+    width: 100%;
+    flex-direction: row;
+
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.icons {
+    background-color: none;
+    width: 20%;
+    height: 100%;
+
+    flex-direction: column;
+    color: white;
+
+    font-size: 0.7rem;
+    gap: 5px;
+}
+
+.icons img {
+    width: 30px;
+    height: 30px;
+}
+
+.home {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    margin-top: 5px;
+}
+
+
+.home img {
+    width: 45px;
+    height: 45px;
+}
+
+.Link {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+
+    padding-top: 10px;
+    height: 100%;
+}

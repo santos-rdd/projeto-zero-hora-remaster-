@@ -1,0 +1,230 @@
+.flow {
+    overflow: hidden;
+}
+
+/* Cotainer */
+.container {
+    height: 100vh;
+    background-color: #ffffff;
+
+    overflow: hidden;
+    position: relative;
+}
+
+/*  Imagem da logo */
+.LogoImg {
+    width: 110px;
+    height: 100px;
+}
+
+.loginForm {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    height: 100vh;
+    background-color: #ffffff;
+}
+
+.loginCard {
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffd000;
+
+    position: absolute;
+    top: 260px;
+
+    border-radius: 20px 20px 0 0;
+    padding: 40px 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+
+    text-align: center;
+    transform: translateY(5px);
+    transition: transform 1.5s ease, opacity 1.5s ease;
+
+    z-index: 98;
+    height: 350px;
+}
+
+.loginCard.show {
+    transform: translateY(-260px);
+    opacity: 1;
+}
+
+.loginCard h2 {
+    margin: 0 0 10px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.loginCard p {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btnBlack {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btnWhite {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.contentLogo {
+    flex-direction: column;
+    position: absolute;
+
+    bottom: 55%;
+    left: 22%;
+    transition: transform 0.8s ease;
+}
+
+.contentLogo.moveUp {
+    transform: translateY(-80px);
+}
+
+
+.topLeft {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+
+    background-color: black;
+    top: 0;
+    left: -50px;
+
+    animation: irForaCima 2s forwards;
+    border-radius: 100%;
+}
+
+.bottomRight {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+
+    background-color: #FFC93C;
+    bottom: 0;
+    right: -100px;
+
+    animation: irFora 2s forwards;
+    border-radius: 100%;
+}
+
+.btnBlack {
+    color: white;
+}
+
+.loginContainer {
+    width: 100%;
+    margin: 50px auto;
+    font-family: Arial, sans-serif;
+
+    position: absolute;
+    top: 100vh;
+    z-index: 99;
+
+    transition: transform 1.5s ease, opacity 1.5s ease;
+
+}
+
+.loginContainer.up {
+    transform: translateY(-90vh);
+    opacity: 1;
+}
+
+/* Card de login */
+.loginArea {
+    background-color: #fff;
+    padding: 30px 25px;
+    border-radius: 15px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    transform: translateY(50px);
+
+}
+
+/* Inputs */
+.loginInput {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+
+    outline: none;
+    font-size: 0.9rem;
+    background-color: #f5f5f5;
+}
+
+/* Link de esqueci a senha */
+.forgotPassword {
+    align-self: flex-end;
+    font-size: 0.8rem;
+    color: #555;
+
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.forgotPassword:hover {
+    text-decoration: underline;
+}
+
+/* Botões */
+.btnLog,
+.btnSingUp {
+    padding: 12px 0;
+    border-radius: 25px;
+    border: none;
+
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.95rem;
+
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btnLog {
+    background-color: #000;
+    color: #fff;
+}
+
+.btnLog:hover {
+    background-color: #333;
+}
+
+.btnSingUp {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ddd;
+}
+
+.btnSingUp:hover {
+    background-color: #f0f0f0;
+}

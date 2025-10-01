@@ -1,0 +1,66 @@
+.divw {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    width: 90%;
+    padding: 12px;
+    border-radius: 8px;
+
+    border: none;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input::placeholder {
+    color: #aaa;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    background-color: white;
+    position: absolute;
+    top: 2.5%;
+    right: 5%;
+
+}
+
+.h1S {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    font-size: 1.1rem;
+}
+
+.img {
+    width: 40px;
+    height: 40px;
+}
+
+.btn {
+    width: 70%;
+    padding: 12px;
+    border-radius: 8px;
+
+    border: none;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,107 @@
+.movimentacoesContainer {
+    padding: 1rem;
+    padding-bottom: 14vh;
+    flex-direction: column;
+
+    height: auto;
+}
+
+.movimentacoesContainer h1 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.buttons {
+    gap: 10px;
+    margin-bottom: 1rem;
+    flex-direction: column;
+}
+
+.buttons button {
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.buttons .entrada {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.buttons .saida {
+    background-color: #000;
+    color: #fff;
+}
+
+.movimentacoesForm {
+    flex-direction: column;
+    display: flex;
+    gap: 5px;
+}
+
+.movimentacoesForm h2 {
+    font-size: 1.0rem;
+}
+
+.formGroup {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    width: 100%;
+    justify-content: flex-start;
+    height: auto;
+}
+
+.formGroup input {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+
+.movimentacoesForm input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+
+
+
+
+.buttonBottom {
+    padding-top: 5%;
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: row;
+    gap: 2%;
+}
+
+.buttonBottom button {
+    width: 48%;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+
+    font-size: 0.7rem;
+    padding: 8px 2px;
+    white-space: nowrap;
+}
+
+.buttonOrange {
+    background-color: orange;
+    color: black;
+    font-weight: bold;
+}
+
+.buttonBlack {
+    background-color: black;
+    color: white;
+}
