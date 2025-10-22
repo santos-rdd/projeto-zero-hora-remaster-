@@ -3,6 +3,8 @@ import Login from './app/(frontEnd)/login/loginPage';
 import Home from './app/(frontEnd)/home/homePage'; 
 import Movimentacoes from './app/(frontEnd)/movimentacoes/movimentacoesPage'; 
 import Estoque from './app/(frontEnd)/estoque/estoquePage'; 
+import Relatorios from './app/(frontEnd)/relatorios/reportPage'; 
+import Pedidos from './app/(frontEnd)/pedidos/pedidosPage'; 
 
 // Importações de estilos
 import "./styles/global.css";
@@ -18,6 +20,8 @@ export default function App(){
             <Route path="/home" element={<Home />}/>
             <Route path="/movimentacoes" element={<Movimentacoes />}/>
             <Route path="/estoque" element={<Estoque />}/>
+            <Route path="/relatorios" element={<Relatorios />}/>
+            <Route path="/pedidos" element={<Pedidos />}/>
         </Routes>
     )
 }

@@ -6,10 +6,6 @@
     border-radius: 20px;
 }
 
-.generalInformation img {
-    width: 20px;
-    height: 20px;
-}
 
 .cotent1 {
     display: flex;
@@ -131,4 +127,13 @@
 .customRadio input[type="radio"]:checked+.radioMark {
     background-color: rgb(139, 91, 0);
 
+}
+
+.share{
+    width: 13px;
+}
+
+.tres{
+    width: 18px;
+    filter: brightness(0) invert(1);
 }

@@ -2,6 +2,7 @@
 import BottomNav from "../../components/bottomNav";
 import "./movimentacoesPage.css";
 import ItemExpedidos from "../../components/itemExpedidos";
+import ItemRow from "../../components/itemRow";
 
 export default function Movimentacoes (){
     return (
@@ -28,7 +29,13 @@ export default function Movimentacoes (){
                     </div>
                 </form>
 
-                    <ItemExpedidos />
+                    <ItemExpedidos>
+                        <ItemRow />
+                        <ItemRow />
+                        <ItemRow />
+                        <ItemRow />
+                        <ItemRow />
+                    </ItemExpedidos>
                    
                     <div className="buttonBottom">
                         <button className="buttonOrange">Confirmar Recebimento</button>

@@ -1,0 +1,164 @@
+
+.infos{
+    background-color: none;
+    height: 420px;
+    flex-direction: column;
+
+    gap: 20px;
+    padding: 20px 50px 1px 50px;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.infos h1{
+    font-size: 1.2rem;
+    margin-right: auto;
+}
+
+.group{
+    background-color: black;
+    height: 35%;
+    width: 95%;
+
+    border-radius: 15px;
+    padding: 20px 20px 10px 20px;
+    display: flex;
+
+    flex-direction: column;
+}
+
+.contp{
+    color: white;
+    font-size: 0.9rem;
+    overflow-wrap: break-word;
+
+    white-space: normal;
+    width: 60%;
+}
+
+.contItems {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    flex-direction: row;
+    gap: 5px;
+    margin-top: 5px;
+
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.contItems p{
+    font-size: 1.1rem;
+    color: white;
+}
+
+.bord{
+    border-bottom: 3px solid white;
+    padding-bottom: 5px
+}
+
+.drob{
+    padding-bottom: 8px
+}
+
+.arrowUp {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;  
+    
+    border-right: 10px solid transparent; 
+    border-bottom: 10px solid green; 
+    margin-bottom: 10px;      
+}
+
+.arrowDown{
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;  
+    
+    border-right: 10px solid transparent; 
+    border-top: 10px solid red;
+    margin-bottom: 10px;      
+}
+
+.contItems2 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    flex-direction: row;
+    gap: 5px;
+    margin-top: 5px;
+
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.contItems2 p {
+    color: white;
+}
+
+.qtd{
+    font-size: 1.1rem;
+    border-bottom: 3px solid white;
+}
+
+.qtdItens{
+    font-size: 0.9rem;   
+    padding-bottom: 6px; 
+    padding-left: 3px; 
+}
+
+.alert{
+    width: 14px;
+    height: 14px;
+    margin-right:5px ;
+}
+
+.noExist{
+    display: none;
+}
+
+.contItems3{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding-top: 10px;
+}
+
+.reqAll{
+    color: white;
+}
+
+.relogio{
+    width: 15px;
+    height: 15px;
+    margin-bottom: 3px;
+}
+
+.semRelogio{
+    display: none;
+}
+
+.req{
+    font-weight: bold;
+    border-bottom: 3px solid white;
+
+    display: flex;
+    gap: 2px;
+}
+
+.req span{
+    margin-top: 2px;
+}
+
+.reqP{
+    font-size: 0.8rem;
+    margin-left: 7px;
+    margin-bottom: 5px;
+}

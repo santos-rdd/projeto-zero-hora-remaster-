@@ -1,0 +1,160 @@
+
+
+
+/* Separação Outra div */
+
+.containerItems{
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+
+    padding: 10px 0px 10px 0px;
+}
+
+.containerCarousel{
+    width: 95%;
+    height: 240px;
+    border: 1px solid rgb(199, 199, 199);
+
+    border-radius: 10px;
+    position: relative;
+}
+
+.descrip{
+    border-bottom:1px solid rgb(199, 199, 199);
+    padding: 5px 0px 5px 0px;
+}
+
+.descrip p {
+    font-size: 0.8rem;
+    padding-left: 10px;
+}
+
+.moreDescrip{
+    width: 100%;
+    display: flex;
+    height: auto;
+
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0 5px 5px;
+
+    border-bottom:1px solid rgb(199, 199, 199);
+    font-size: 0.8rem;
+}
+
+.cont1{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    
+    justify-content: center;
+    flex-direction: row;
+}
+
+.cont1 p{
+    width: 50%;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.cont2{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    
+    justify-content: center;
+    flex-direction: row;
+}
+
+.cont2 p{
+    width: 50%;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.qtdd{
+    padding-right: 25px;
+}
+
+.carousel{
+    max-height: 145px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    width: 100%;
+    height: 100%;
+}
+
+.containerOverView{
+    width: 100%;
+    height: 18%;
+    padding: 5px 0px 5px 0;
+    border-top: 1px solid rgb(199, 199, 199);
+}
+
+.All{
+    width: 60%;
+}
+
+.All p{
+    width: 80%;
+    text-align: right;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.sum{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    
+    justify-content: center;
+    flex-direction: row;
+}
+
+
+.sum p{
+    width: 50%;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.sumAll{
+    text-align: center;    
+    padding: 0 0 0 10px;
+}
+
+.total{
+    text-align: left;
+    padding: 0 0 0 8px;
+}
+
+.containerButtons{
+    width: 100%;
+    height: 70px;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.btnAll{
+    border: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.btn1{
+    background-color: orange;
+    padding: 7px 10px 7px 10px;
+}
+
+.btn2{
+    background-color: black;
+    color: white;
+    padding: 7px 37px 7px 37px;
+}

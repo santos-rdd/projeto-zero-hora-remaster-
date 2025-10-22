@@ -1,27 +1,27 @@
 import "./itemExpedidos.css";
 import ItemRow from "./itemRow";
+import { useState } from "react";
 
-export default function ItemExpedidos(){
+export default function ItemExpedidos(props){
+
+    const info1 = props.info1 || "Cód";
+    const info2 = props.info2 || "Item";
+    const info3 = props.info3 || "Fornecedor";
+    const info4 = props.info4 || "Qtd";
+    const info5 = props.info5 || "Status";
+
     return (
          <div class="itensExpedidos">
                         <div className="itensRecebidos">Itens Recebidos</div>
                         <div className="opcoes">
-                            <p>Cód</p>
-                            <p>Item</p>
-                            <p>Fornecedor</p>
-                            <p>Qtd</p>
-                            <p>Status</p>
+                            <p> { info1 } </p>
+                            <p>{ info2 }</p>
+                            <p>{ info3 }</p>
+                            <p>{ info4 }</p>
+                            <p>{ info5 }</p>
                         </div>
                         <div className="carouselVertical">
-                            <ItemRow />
-                            <ItemRow cod="88888" item="chapa aluminio"/>
-                            <ItemRow cod="77777" item="colorink Sa"/>
-                            <ItemRow cod="77777" item="colorink Sa"/>
-                            <ItemRow cod="77777" item="colorink Sa"/>
-                            <ItemRow cod="77777" item="colorink Sa"/>
-                            <ItemRow cod="77777" item="colorink Sa"/>
-                            <ItemRow cod="77777" item="colorink Sa"/>
-                            <ItemRow cod="77777" item="colorink Sa"/>
+                            {  props.children }
                         </div>
                     </div>
     )

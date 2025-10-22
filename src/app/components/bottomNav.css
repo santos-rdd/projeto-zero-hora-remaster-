@@ -1,14 +1,11 @@
 .bottomDiv {
     background-color: black;
-    height: 12vh;
+    height: 11vh;
     position: fixed;
 
     bottom: 0;
     width: 100%;
     flex-direction: row;
-
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
 }
 
 .icons {
@@ -17,9 +14,7 @@
     height: 100%;
 
     flex-direction: column;
-    color: white;
-
-    font-size: 0.7rem;
+    color: black;
     gap: 5px;
 }
 
@@ -35,14 +30,17 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-
-    margin-top: 5px;
+    margin-top: 8px;
+    
 }
 
 
 .home img {
-    width: 45px;
-    height: 45px;
+    width: 60%;
+    height: 70%;
+    border: 4px solid black;
+    border-radius: 100%;
+    padding: 0 3px 3px 3px;
 }
 
 .Link {
@@ -56,4 +54,8 @@
 
     padding-top: 10px;
     height: 100%;
+}
+
+.Link p{
+    font-size: 0.7rem;
 }

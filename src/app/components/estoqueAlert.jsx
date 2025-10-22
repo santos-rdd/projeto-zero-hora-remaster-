@@ -6,6 +6,8 @@ import Cinematografia from "../../assets/images/cinematografia.png";
 export default function EstoqueAlert(props){
 
     const cor = props.cor || "red";
+    const title = props.title || "Adicione um titulo";
+    const subTitle = props.subTitle || "Adicione um titulo";
 
     return(
             <div class="card">
@@ -20,7 +22,7 @@ export default function EstoqueAlert(props){
                 }}/>
 
                 <div class="cardContent">
-                    <p>Cartuchos com baixas unidade em estoque</p>
+                    <p> { title } </p>
                 </div>
 
                 <div class="cardFooter">

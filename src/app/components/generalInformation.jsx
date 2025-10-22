@@ -1,5 +1,5 @@
 import "./generalInformation.css";
-import Compartilhar from "../../assets/images/compartilhar.png";
+import Share from "../../assets/images/icons/share.png";
 import tresPontos from "../../assets/images/tresPontos.png";
 
 export default function GeneralInformation (){
@@ -7,8 +7,8 @@ export default function GeneralInformation (){
           <div className="generalInformation">
                     <div className="cotent1">
                         <p>Informações Gerais</p>
-                        <img src={Compartilhar} alt="Compartilhar" />
-                        <img src={tresPontos} alt="Ver Mais" />
+                        <img src={Share} alt="Compartilhar" className="share invert" />
+                        <img src={tresPontos} alt="Ver Mais" className="tres"/>
                     </div>
 
                     <div className="cotent2">
