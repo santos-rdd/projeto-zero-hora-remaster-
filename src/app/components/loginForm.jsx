@@ -13,6 +13,7 @@ export default function LoginForm() {
   const [logoUp, setLogoUp] = useState(false);
   const [extend, setExtend] = useState(false);
   const [showLoginCard, setShowLoginCard] = useState(false);
+  const [showPop, setShowPop] = useState(true);
 
   // Campos de Nome, Senha e Mensagem
   const [nome, setNome] = useState("");
@@ -43,12 +44,7 @@ export default function LoginForm() {
       }
       return;
     }
-
-
-
-
-
-
+    
    const handleClick = () => {
     setShowLoginCard(true); 
   };
@@ -62,21 +58,24 @@ export default function LoginForm() {
        setFadeOut(true); 
        setLogoUp(true);
        setTimeout(() => setShowLogin(true), 800); 
-     }, 2000); 
+      }, 2000); 
+      const timePop =  setTimeout(() => {
+        setShowPop(false);
+     }, 2500);
      return () => clearTimeout(timer);
    }, []);
 
   return (
     <>
       {!showLogin ? (
-        <div className={`container ${fadeOut ? "fadeOut" : "fadeIn"}`}>
+        <div className={`container ${fadeOut ? "fadeOut" : ""}`}>
 
           <div className="content">
 
             <div className="topLeft"></div>
             <div className="bottomRight"></div>
 
-                <div className={`flex contentLogo ${logoUp ? "moveUp" : ""}`}>
+                <div className={`flex contentLogo ${showPop ? "popAnim" : ""} ${logoUp ? "moveUp" : ""}`}>
                     <img className="LogoImg" src={ZeroHora} alt="Logo" />
                     <h1>ZeroHora</h1>
                     <p>COMUNICAÇÃO VISUAL</p>

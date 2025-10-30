@@ -20,7 +20,6 @@
 .loginForm {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
 
     height: 100vh;
     background-color: #ffffff;
@@ -92,15 +91,32 @@
 
 .contentLogo {
     flex-direction: column;
-    position: absolute;
+    height: 100vh;
 
-    bottom: 55%;
-    left: 27%;
     transition: transform 0.8s ease;
+    transform: translateY(-80px);
+}
+
+.popAnim {
+    animation: pop 0.6s ease;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes pop {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .contentLogo.moveUp {
-    transform: translateY(-80px);
+    transform: translateY(-120px);
 }
 
 
@@ -245,3 +261,4 @@
 .mostrarSenha:hover {
   color: #000;
 }
+
