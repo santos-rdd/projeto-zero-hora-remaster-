@@ -1,14 +1,53 @@
 import { useState, useEffect } from "react";
 import ZeroHora from "../../assets/images/zeroHoraPrint.png";
+import { useDatabase } from "../(backEnd)/hooks/useDatabase";
 import "./loginForm.css";
-import { Link } from "react-router-dom";
+import "../../styles/effects.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate  } from "react-router-dom";
 
 export default function LoginForm() {
+  const navigate = useNavigate();
   const [showLogin, setShowLogin] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
   const [logoUp, setLogoUp] = useState(false);
   const [extend, setExtend] = useState(false);
   const [showLoginCard, setShowLoginCard] = useState(false);
+
+  // Campos de Nome, Senha e Mensagem
+  const [nome, setNome] = useState("");
+  const [senha, setSenha] = useState("");
+  const [erro, setErro] = useState(false);
+  const [mostrarSenha, setMostrarSenha] = useState(false);
+
+  // Validação de dados
+    const users = useDatabase("users" );
+
+    // Para não dar erro no login 
+    const esperaLogin = () =>{
+      if(!users || users.length === 0){
+        return;
+      };
+      const userEncontrado = users.find(
+        user => user.name === nome && user.password === senha
+      );
+
+      // Validação 
+      if(userEncontrado){
+        console.log("Login bem sucedido: ", userEncontrado);
+        setErro(false);
+        navigate("/home");
+      } else {
+        setErro(true);
+        setTimeout(()=> setErro(false), 1000);
+      }
+      return;
+    }
+
+
+
+
+
 
    const handleClick = () => {
     setShowLoginCard(true); 
@@ -65,13 +104,42 @@ export default function LoginForm() {
                 </div>
           </div>
 
-          <div class={`loginContainer ${showLoginCard ? "up" : ""}`}>
-              <div class="loginArea">
-                <input type="text" placeholder="Usuário" class="loginInput" />
-                <input type="password" placeholder="Senha" class="loginInput" />
-                <Link to="#" class="forgotPassword">Esqueceu a Senha?</Link>
-                <Link to="/home" class="btnLog">Entrar</Link>
-                <Link to="/home" class="btnSingUp">Registrar</Link>
+          <div className={`loginContainer ${showLoginCard ? "up" : ""}`}>
+              <div className="loginArea">
+                <input type="text" placeholder="Usuário" 
+                className={`loginInput ${erro ? "treme" : ""}`}
+                value={nome} 
+                onChange={e => setNome(e.target.value)}/>
+
+                <input 
+                type={mostrarSenha ? "text" : "password"} 
+                placeholder="Senha" 
+                className={`loginInput ${erro ? "treme" : ""}`}
+                value={senha}
+                onChange={e=> setSenha(e.target.value)}/>
+
+                <span className="mostrarSenha" onClick={() => setMostrarSenha(!mostrarSenha)}>
+                  {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
+                </span>
+
+                <button className="forgotPassword">
+                  Esqueceu a Senha?
+                </button>
+
+
+                <button className="btnLog"
+                  onClick={esperaLogin}
+                  >
+                  Entrar
+                </button>
+
+                <button className="btnSingUp"
+                  onClick={esperaLogin}
+                >                  
+                  Registrar
+                </button>
+
+
               </div>
             </div>  
         </div>

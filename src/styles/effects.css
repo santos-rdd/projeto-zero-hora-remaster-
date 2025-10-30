@@ -12,3 +12,16 @@
         0 15px 25px rgba(0, 0, 0, 0.15),
         0 20px 35px rgba(0, 0, 0, 0.25);
 }
+
+@keyframes treme {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.treme {
+  animation: treme 0.3s;
+  border: 1px solid #e74d3c;
+}

@@ -95,7 +95,7 @@
     position: absolute;
 
     bottom: 55%;
-    left: 22%;
+    left: 27%;
     transition: transform 0.8s ease;
 }
 
@@ -144,7 +144,6 @@
     z-index: 99;
 
     transition: transform 1.5s ease, opacity 1.5s ease;
-
 }
 
 .loginContainer.up {
@@ -189,6 +188,7 @@
 
     text-decoration: none;
     margin-bottom: 10px;
+    border: none;
 }
 
 .forgotPassword:hover {
@@ -227,4 +227,21 @@
 
 .btnSingUp:hover {
     background-color: #f0f0f0;
+}
+
+.mostrarSenha {
+  position: absolute;
+  right: 40px;
+  top: 98px;
+  cursor: pointer;
+
+  font-size: 1.2rem;
+  user-select: none;
+  color: #666;
+
+  transition: color 0.2s;
+}
+
+.mostrarSenha:hover {
+  color: #000;
 }
