@@ -48,6 +48,8 @@ export default function BottomNav (){
                     <p>Relatórios</p>
                 </Link>
             </div>
+
+            <div className="areaSeguraMobile"></div>
         </div>
     )
 }
