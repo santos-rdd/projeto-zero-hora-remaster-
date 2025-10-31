@@ -42,7 +42,7 @@
     transition: transform 1.5s ease, opacity 1.5s ease;
 
     z-index: 98;
-    height: 350px;
+    height: 800px;
 }
 
 .loginCard.show {
@@ -92,9 +92,14 @@
 .contentLogo {
     flex-direction: column;
     height: 100vh;
+    display: flex;
 
     transition: transform 0.8s ease;
     transform: translateY(-80px);
+    align-items: center;
+    
+    justify-content: flex-start;
+    padding-top: 60%;
 }
 
 .popAnim {

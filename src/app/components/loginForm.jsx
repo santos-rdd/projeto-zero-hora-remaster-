@@ -61,7 +61,7 @@ export default function LoginForm() {
       }, 2000); 
       const timePop =  setTimeout(() => {
         setShowPop(false);
-     }, 2500);
+     }, 3000);
      return () => clearTimeout(timer);
    }, []);
 
@@ -75,7 +75,7 @@ export default function LoginForm() {
             <div className="topLeft"></div>
             <div className="bottomRight"></div>
 
-                <div className={`flex contentLogo ${showPop ? "popAnim" : ""} ${logoUp ? "moveUp" : ""}`}>
+                <div className={`contentLogo ${showPop ? "popAnim" : ""} ${logoUp ? "moveUp" : ""}`}>
                     <img className="LogoImg" src={ZeroHora} alt="Logo" />
                     <h1>ZeroHora</h1>
                     <p>COMUNICAÇÃO VISUAL</p>
@@ -84,7 +84,7 @@ export default function LoginForm() {
         </div>
       ) : (
         <div className="loginForm slideUp flow">
-            <div className="flex contentLogo">
+            <div className="contentLogo">
                 <img className="LogoImg" src={ZeroHora} alt="Logo" />
                 <h1>ZeroHora</h1>
                 <p>COMUNICAÇÃO VISUAL</p>
