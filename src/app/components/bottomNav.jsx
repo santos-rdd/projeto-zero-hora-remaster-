@@ -49,7 +49,6 @@ export default function BottomNav (){
                 </Link>
             </div>
 
-            <div className="areaSeguraMobile"></div>
         </div>
     )
 }

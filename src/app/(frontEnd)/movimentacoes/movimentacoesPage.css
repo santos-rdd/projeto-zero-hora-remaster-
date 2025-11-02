@@ -27,13 +27,18 @@
 }
 
 .buttons .entrada {
-    background-color: #ffc107;
-    color: #000;
+    background-color: black;
+    color: white;
 }
 
 .buttons .saida {
     background-color: #000;
     color: #fff;
+} 
+
+.active{
+    background-color: orange;
+    color: black;
 }
 
 .movimentacoesForm {

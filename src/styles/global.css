@@ -30,9 +30,9 @@ body, main, #root {
   left: 0;
 
   width: 100%;
-  height: env(safe-area-inset-bottom);
+  height: env(safe-area-inset-bottom, 20px);
   background-color: #000; 
-  
+
   z-index: 999; 
 }
 
