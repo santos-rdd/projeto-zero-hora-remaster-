@@ -1,25 +1,40 @@
 import "./carouselQtd.css";
 import NewItemRow from "./newItemRow";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDatabase } from "../(backEnd)/hooks/useDatabase";
+import { useFaturamento } from "../(backEnd)/hooks/useFaturamento";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function CarouselQtd (props){
 
-    const [valores, setValores] = useState([0,0,0,0,0]);
-    const [precos, setPrecos] = useState([10.10, 5.50, 8.00,9.12,7.15]);
+    const itensAd = useDatabase("itensAdicionados");
+    const { adicionarValor } = useFaturamento(); 
+    const [ total, setTotal ] = useState({});
+    const [reset, setReset] = useState(false);
+    
+    const atualizarItem = (id, quantidade, totalItem) => {
+        setTotal(p => ({
+            ...p,
+            [id]: { quantidade, totalItem }
+        }));
+    };
 
-    const somaQuantidade = valores.reduce((a,b) => a + b, 0);
-    const somaValor = valores.reduce((acc, qtd, i) => acc + qtd * (precos[i] || 0), 0);
+    const totalPedido = Object.values(total)
+        .reduce((a, i) => a + i.totalItem, 0);
 
-    function mudaValor(indice, novoValor){
-        const copiaValores = [...valores];
-        copiaValores[indice] = novoValor;
-        setValores(copiaValores);
-    }
+    const totalProdutos = Object.values(total)
+        .reduce((a, i) => a + i.quantidade, 0);
 
-   
+    const confirmar = () => {
+        adicionarValor(totalPedido);
+        toast.success("Pedido confirmado!");
+        setTotal({});     
+        setReset(prev => !prev);
+    };
 
     return (
                         <div className="containerItems">
+                            <Toaster />
                             <div className="containerCarousel">
         
                                 <div className="descrip">
@@ -40,15 +55,17 @@ export default function CarouselQtd (props){
                                 </div>
         
                                 <div className="carousel">
-                                    {valores.map((valor, indice) =>{
-                                        return (
+                                    {itensAd.map((i) =>(
                                             <NewItemRow 
-                                                key={indice}
-                                                valor={valor}
-                                                value={precos[indice]}
-                                                mudarValor={(novo) => mudaValor(indice,novo)}
+                                                key={i.id}
+                                                id={i.id}
+                                                cod={i.cod}
+                                                item={i.item}
+                                                valor={i.valor} 
+                                                reset={reset}
+                                                atualizarItem={atualizarItem}
                                             />
-                                        )})}
+                                    ))}
                                 </div>
         
                               <div className="containerOverView flex">
@@ -58,15 +75,24 @@ export default function CarouselQtd (props){
         
                                 <div className="sum">
                                     <p className="sumAll"> 
-                                        R${somaValor.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} 
+                                        R${totalPedido.toFixed(2)}
                                     </p>
-                                    <p className="total"> {somaQuantidade} Produtos</p>
+                                    <p className="total">                    {totalProdutos} Produtos</p>
                                 </div>
 
 
                               </div>
                                 <div className="containerButtons flex">
-                                        <button className="btnAll btn1">
+                                        <button className="btnAll btn1"
+                                        onClick= {() =>
+                                          {
+                                           if (totalPedido <= 0) {
+                                            toast.error("Adicione pedidos antes de confirmar!");
+                                            } else {
+                                            confirmar();
+                                            }
+                                          }}
+                                        >
                                             Confirmar Pedido
                                         </button>
 

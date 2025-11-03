@@ -5,18 +5,29 @@ export default function CategoriaToggle (props){
 
     const [ativo, setAtivo] = useState("ativo");
 
+    const button = (ativo) => {
+        setAtivo(ativo);
+        props.toggle(ativo);
+    }   
+
     return (
 
     <div className="categoriaToggle">
         <button className={`basic rawMaterial
         ${ativo === "ativo" ? "ativo" : ""}`}
-        onClick={() => setAtivo("ativo")}>
+        onClick={
+            () => {
+            button("ativo");
+            }}>
             Matérias-Primas
         </button>
 
         <button className={`basic finishedProducts
         ${ativo === "inativo" ? "ativo" : ""}`}
-        onClick={() => setAtivo("inativo")}>
+        onClick={
+            () => {
+            button("inativo");
+            }}>
             Produtos Acabados
         </button>
 

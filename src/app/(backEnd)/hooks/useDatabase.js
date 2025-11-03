@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-import { initializeApp } from "firebase/app";
+import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../firebaseAdm";
 
-export function useDatabase(dbValues){
-    const [data, setData] = useState([]);
+export function useDatabase(dbValues) {
+  const [data, setData] = useState([]);
 
-    useEffect(()=>{
-        const getData = async() => {
-            const recebeRef = collection(db, dbValues);
-            const ref = await getDocs(recebeRef);
-            setData(ref.docs.map( doc =>({id: doc.id, ...doc.data() })));
-        };
-    getData();
-    },[dbValues]);
-    
-    return data; 
+  useEffect(() => {
+    const recebeRef = collection(db, dbValues);
+
+    const unsubscribe = onSnapshot(recebeRef, (snapshot) => {
+      const documentos = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setData(documentos);
+    });
+
+    return () => unsubscribe();
+  }, [dbValues]);
+
+  return data;
 }

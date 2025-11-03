@@ -2,12 +2,19 @@ import "./estoqueAlert.css";
 import Caixa from "../../assets/images/caixa.png";
 import Notificacao from "../../assets/images/notificacao.png";
 import Cinematografia from "../../assets/images/cinematografia.png";
+import { useState, useEffect } from "react";
+import { useDatabase } from "../(backEnd)/hooks/useDatabase";
+
 
 export default function EstoqueAlert(props){
 
     const cor = props.cor || "red";
     const title = props.title || "Adicione um titulo";
     const subTitle = props.subTitle || "Adicione um titulo";
+
+    
+
+  
 
     return(
             <div class="card">

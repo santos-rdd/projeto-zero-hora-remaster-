@@ -2,19 +2,19 @@ import "./itemRow.css";
 
 export default function ItemRow (props){
 
-    const cod = props.cod || "99999";
-    const item = props.item || "papel sulfite A4";
-    const fornecedor = props.fornecedor || "papelaria SA";
-    const qtd = props.qtd || "4";
-    const status = props.status || "Conferido";
+    const i1 = props.i1 || "?";
+    const i2 = props.i2 || "???";
+    const i3 = props.i3 || "???";
+    const i4 = props.i4 || "?";
+    const i5 = props.i5 || "???";
 
     return (
         <div className="row">
-            <p>{ cod }</p>
-            <p className="align">{ item }</p>
-            <p>{ fornecedor }</p>
-            <p>{ qtd }</p>
-            <p>{ status }</p>
+            <p>{ i1 }</p>
+            <p className="align">{ i2 }</p>
+            <p>{ i3 }</p>
+            <p>{ i4 }</p>
+            <p>{ i5 }</p>
         </div>
     )
 }

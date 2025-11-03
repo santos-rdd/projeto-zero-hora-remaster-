@@ -1,9 +1,23 @@
 import "./DualSearch.css";
+import toast from "react-hot-toast";
+import { useState } from "react";
 
 export default function DualSearch(props){
 
-  const exampleText1 = props.exampleText1 || "Nome";
-  const exampleText2 = props.exampleText2 || "Codigo";
+  const[tremedinha, setTreme] = useState("");
+
+  function tost(){
+    if(!name || !cod){
+      toast.error("Preencha os itens para fazer uma busca!");
+      setTreme("treme");
+        setTimeout(()=>{
+          setTreme("");
+        },500);
+    }
+  }
+
+  const [ name, setName ] = useState("");
+  const [ cod, setCod ] = useState("");
 
     return (
         <div>
@@ -11,18 +25,22 @@ export default function DualSearch(props){
 
             <div className="campoBusca flex">
 
-                <input className="nomeProduto"
-                type="text" name="Nome" id="Nome"
-                placeholder={exampleText1} />
+                <input className={`nomeProduto ${tremedinha}`}
+                type="text" name="Nome" id="Nome" value={name}
+                placeholder="Nome" 
+                onChange={n => setName(n.target.value)}
+                />
 
                 <p>ou</p>
 
-                <input className="buscaCodigo"
-                type="text" name="Codigo" id="Codigo"
-                placeholder={exampleText2} />
+                <input className={`buscaCodigo ${tremedinha}`}
+                type="text" name="Codigo" id="Codigo" value={cod}
+                placeholder="Codigo" 
+                onChange={c => setCod(c.target.value)}/>
             </div>
 
-            <button className="buscarCodigo">
+            <button className="buscarCodigo"
+            onClick={()=>tost()}>
               Buscar
             </button>
         </div>

@@ -5,9 +5,17 @@ import ItemExpedidos from "../../components/itemExpedidos";
 import ItemRow from "../../components/itemRow";
 import { useDatabase } from "../../(backEnd)/hooks/useDatabase";
 import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
+import { addDoc, collection } from "firebase/firestore";
+
 
 export default function Movimentacoes (){
 
+    // Importe banco de dados 
+    const itens = useDatabase("itensRecebidos");
+
+
+    // Mudança de estilo 
     const [ativado1, setAtivado1] = useState(true);
     const [ativado2, setAtivado2] = useState(false);
     const [movimentador, setMov] = useState("Fornecedor");
@@ -19,14 +27,16 @@ export default function Movimentacoes (){
     const [inp3, setInp3] = useState("");
 
     function btnFunction (){
-        setTreme("treme");
-        setTimeout(()=>{
-            setTreme("");
-        }, 500);
+        if(ativado1 == true){
+            if(!inp1 || !inp2 || !inp3 ){
+                toast.error("Preencha todos os campos!");
+                setTreme("treme");
+                setTimeout(()=>{
+                    setTreme("");
+                }, 500);
+            }
+        }
     }
-
-   
-    
 
     return (
         <div className="divw">
@@ -77,11 +87,16 @@ export default function Movimentacoes (){
                 </form>
 
                     <ItemExpedidos>
-                        <ItemRow />
-                        <ItemRow />
-                        <ItemRow />
-                        <ItemRow />
-                        <ItemRow />
+                        {itens.map((i)=>(
+                            <ItemRow
+                                key={i.id}
+                                i1={i.cod}
+                                i2={i.item}
+                                i3={i.fornecedor}
+                                i4={i.qtd}
+                                i5={i.status}
+                             />
+                        ))}
                     </ItemExpedidos>
                    
                     <div className="buttonBottom">

@@ -5,73 +5,53 @@ import DualSearch from "../../components/DualSearch";
 import CategoriaToggle from "../../components/categoriaToggle";
 import ItemExpedidos from "../../components/itemExpedidos";
 import ItemRow from "../../components/itemRow";
+import { useState } from "react";
+import { useDatabase } from "../../(backEnd)/hooks/useDatabase";
+import toast from "react-hot-toast";
 
 export default function Estoque(){
+
+    const [butter, setButter] = useState("");
+    const estoque = useDatabase("itensRecebidos2");
+
+    const receba = (tog) => {
+        setButter(tog);
+    };
     return (
         <div className="along">
             <h1 className="title">Estoque</h1>
-            <CategoriaToggle />
+
+            <CategoriaToggle toggle={receba}/>
+
             <DualSearch />
+
             <ItemExpedidos 
             info3={<>Total.<br />disponível</>}
             info4={<>Total.<br />alocado</>}
             info5={<>Total.<br />físico</>} >
             
-                <ItemRow 
-                cod="71040"
-                item="tinta cyan litro"
-                fornecedor="28"
-                qtd="27"
-                status="55"/>
+                {estoque.map((e)=>(
+                    <ItemRow 
+                        key={e.id}
+                        i1={e.cod}
+                        i2={e.item}
+                        i3={e.totalAlocado}
+                        i4={e.totalDisponivel}
+                        i5={e.totalFisico}
+                        />
+                ))}
                 
-                <ItemRow 
-                cod="71040"
-                item="tinta cyan litro"
-                fornecedor="28"
-                qtd="27"
-                status="55"/>
-
-                <ItemRow 
-                cod="71040"
-                item="tinta cyan litro"
-                fornecedor="28"
-                qtd="27"
-                status="55"/>
-
-                <ItemRow 
-                cod="71040"
-                item="tinta cyan litro"
-                fornecedor="28"
-                qtd="27"
-                status="55"/>
-
-                <ItemRow 
-                cod="71040"
-                item="tinta cyan litro"
-                fornecedor="28"
-                qtd="27"
-                status="55"/>
-
-                <ItemRow 
-                cod="71040"
-                item="tinta cyan litro"
-                fornecedor="28"
-                qtd="27"
-                status="55"/>
-
-                <ItemRow 
-                cod="71040"
-                item="tinta cyan litro"
-                fornecedor="28"
-                qtd="27"
-                status="55"/>
 
             </ItemExpedidos>
 
             <div className="dualButtons">
-                <button className="all history">Histórivo de <br/>Movimentações</button> 
+                <button className="all history">
+                    Histórivo de <br/>Movimentações
+                </button> 
 
-                <button className="all stock">Ajustar Estoque</button>
+                <button className="all stock">
+                    Ajustar Estoque
+                </button>
             </div>
             
 

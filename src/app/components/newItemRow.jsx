@@ -1,40 +1,39 @@
 import "./newItemRow.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function NewItemRow (props) {
 
-    const mudarValor = props.mudarValor;
-    const [valor, setValor] = useState(props.valor || 0);
+    const [quantidade, setQuantidade] = useState(0);
+    const [totalItem, setTotalItem] = useState(0);
 
-    function increment (){
-        const novo = valor + 1;
-        setValor(novo);
-        mudarValor(novo);
-    }
+    const valorUnitario = props.valor || 0;
 
-    function decrement (){
-        const novo = valor > 0 ? valor - 1 : 0;
-        setValor(novo);
-        mudarValor(novo);
-    }
+    useEffect(() => {
+        setTotalItem(quantidade * valorUnitario);
+        props.atualizarItem(props.id, quantidade, quantidade * valorUnitario);
+    }, [quantidade]);
 
-    const cod = props.cod || "99999";
-    const item = props.item || "papel sufite A4";
-    const value = props.value || 10.10;
-    
+    useEffect(() => {
+        setQuantidade(0);
+        setTotalItem(0);
+    }, [props.reset]);
+
+    const increment = () => setQuantidade(prev => prev + 1);
+    const decrement = () => setQuantidade(prev => Math.max(prev - 1, 0))
+
     return (
         <div className="containerRow">
             <div className="allrow row1">
 
-                <div className="rowItem item1"> { cod } </div>
+                <div className="rowItem item1"> { props.cod } </div>
 
-                <div className="rowItem item2"> { item } </div>
+                <div className="rowItem item2"> { props.item } </div>
             </div>
 
             <div className="allrow row2">
 
                 <div className="rowItem item3">
-                    R${props.value.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                    R${props.valor}
                 </div>
 
                 <div className="rowItem item4">
@@ -43,7 +42,7 @@ export default function NewItemRow (props) {
                         <button className="btnCont rg"
                         onClick={()=> increment()}>+</button>
 
-                            { valor }
+                            { quantidade }
 
                         <button className="btnCont lf"
                         onClick={()=> decrement()}>-</button>

@@ -5,6 +5,7 @@ import "./loginForm.css";
 import "../../styles/effects.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate  } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ export default function LoginForm() {
   const [mostrarSenha, setMostrarSenha] = useState(false);
 
   // Validação de dados
-    const users = useDatabase("users" );
+    const users = useDatabase("users" );   
 
     // Para não dar erro no login 
     const esperaLogin = () =>{
@@ -32,6 +33,16 @@ export default function LoginForm() {
       const userEncontrado = users.find(
         user => user.name === nome && user.password === senha
       );
+
+      // Toast Validaçao
+       if(!nome || !senha){
+        toast.error("Preencha todos os campos!");
+        return;
+      }
+
+       if (!userEncontrado) {
+        toast.error("Usuário ou senha incorretos!");
+      } 
 
       // Validação 
       if(userEncontrado){
