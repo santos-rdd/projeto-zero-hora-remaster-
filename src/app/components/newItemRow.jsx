@@ -2,54 +2,49 @@ import "./newItemRow.css";
 import { useState, useEffect } from "react";
 
 export default function NewItemRow (props) {
+  const [quantidade, setQuantidade] = useState(0);
+  const [totalItem, setTotalItem] = useState(0);
+  const valorUnitario = props.valor || 0;
 
-    const [quantidade, setQuantidade] = useState(0);
-    const [totalItem, setTotalItem] = useState(0);
+  useEffect(() => {
+    const novoTotal = quantidade * valorUnitario;
+    setTotalItem(novoTotal);
+    props.atualizarItem(props.id, quantidade, novoTotal);
+  }, [quantidade]);
 
-    const valorUnitario = props.valor || 0;
+  useEffect(() => {
+    setQuantidade(0);
+    setTotalItem(0);
+  }, [props.reset]);
 
-    useEffect(() => {
-        setTotalItem(quantidade * valorUnitario);
-        props.atualizarItem(props.id, quantidade, quantidade * valorUnitario);
-    }, [quantidade]);
+  const increment = () => {
+    setQuantidade(prev => prev + 1);
+  };
 
-    useEffect(() => {
-        setQuantidade(0);
-        setTotalItem(0);
-    }, [props.reset]);
+  const decrement = () => {
+    setQuantidade(prev => Math.max(prev - 1, 0));
+  };
 
-    const increment = () => setQuantidade(prev => prev + 1);
-    const decrement = () => setQuantidade(prev => Math.max(prev - 1, 0))
+  return (
+    <div className="containerRow">
+      <div className="allrow row1">
+        <div className="rowItem item1">{props.cod}</div>
+        <div className="rowItem item2">{props.item}</div>
+      </div>
 
-    return (
-        <div className="containerRow">
-            <div className="allrow row1">
-
-                <div className="rowItem item1"> { props.cod } </div>
-
-                <div className="rowItem item2"> { props.item } </div>
-            </div>
-
-            <div className="allrow row2">
-
-                <div className="rowItem item3">
-                    R${props.valor}
-                </div>
-
-                <div className="rowItem item4">
-                    <div className="containerButtonCont">
-
-                        <button className="btnCont rg"
-                        onClick={()=> increment()}>+</button>
-
-                            { quantidade }
-
-                        <button className="btnCont lf"
-                        onClick={()=> decrement()}>-</button>
-
-                    </div>
-                </div>
-            </div>
+      <div className="allrow row2">
+        <div className="rowItem item3">
+          R${props.valor}
         </div>
-    )
+
+        <div className="rowItem item4">
+          <div className="containerButtonCont">
+            <button className="btnCont rg" onClick={increment}>+</button>
+              {quantidade}
+            <button className="btnCont lf" onClick={decrement}>-</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

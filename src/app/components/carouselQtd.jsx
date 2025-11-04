@@ -8,9 +8,11 @@ import toast, { Toaster } from "react-hot-toast";
 export default function CarouselQtd (props){
 
     const itensAd = useDatabase("itensAdicionados");
-    const { adicionarValor } = useFaturamento(); 
+    const { adicionarValor, adicionarProdutos  } = useFaturamento(); 
     const [ total, setTotal ] = useState({});
-    const [reset, setReset] = useState(false);
+    const [ reset, setReset ] = useState(false);
+    const [carregando, setCarregando] = useState(false);
+
     
     const atualizarItem = (id, quantidade, totalItem) => {
         setTotal(p => ({
@@ -25,11 +27,22 @@ export default function CarouselQtd (props){
     const totalProdutos = Object.values(total)
         .reduce((a, i) => a + i.quantidade, 0);
 
-    const confirmar = () => {
-        adicionarValor(totalPedido);
-        toast.success("Pedido confirmado!");
-        setTotal({});     
+    const confirmar = async () => {
+
+    if (carregando) return; 
+    setCarregando(true);
+    toast.success("Pedido confirmado!", { id: "pedido" });
+
+    try {
+        await adicionarValor(totalPedido);
+        await adicionarProdutos(totalProdutos);
+        setTotal({});
         setReset(prev => !prev);
+    } catch (err) {
+        toast.error("Erro ao confirmar pedido!");
+    } finally {
+        setCarregando(false);
+    }
     };
 
     return (
