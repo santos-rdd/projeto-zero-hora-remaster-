@@ -109,24 +109,22 @@
 
 }
 
-.customRadio input[type="radio"] {
+.customRadio input[type="checkbox"] {
     display: none;
 }
 
 .radioMark {
     width: 11px;
     height: 11px;
-    border-radius: 50%;
-
-    background-color: none;
-    display: inline-block;
+    border-radius: 50%; 
     border: 1px solid black;
+    display: inline-block;
     position: relative;
+    background-color: none;
 }
 
-.customRadio input[type="radio"]:checked+.radioMark {
-    background-color: rgb(139, 91, 0);
-
+.customRadio input[type="checkbox"]:checked + .radioMark {
+    background-color: rgb(0, 0, 0);
 }
 
 .share{

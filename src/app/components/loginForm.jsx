@@ -4,7 +4,7 @@ import { useDatabase } from "../(backEnd)/hooks/useDatabase";
 import "./loginForm.css";
 import "../../styles/effects.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useNavigate  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 export default function LoginForm() {
@@ -23,135 +23,138 @@ export default function LoginForm() {
   const [mostrarSenha, setMostrarSenha] = useState(false);
 
   // Validação de dados
-    const users = useDatabase("users" );   
+  const users = useDatabase("users");
 
-    // Para não dar erro no login 
-    const esperaLogin = () =>{
-      if(!users || users.length === 0){
-        return;
-      };
-      const userEncontrado = users.find(
-        user => user.name === nome && user.password === senha
-      );
-
-      // Toast Validaçao
-       if(!nome || !senha){
-        toast.error("Preencha todos os campos!");
-        return;
-      }
-
-       if (!userEncontrado) {
-        toast.error("Usuário ou senha incorretos!");
-      } 
-
-      // Validação 
-      if(userEncontrado){
-        console.log("Login bem sucedido: ", userEncontrado);
-        setErro(false);
-        navigate("/home");
-      } else {
-        setErro(true);
-        setTimeout(()=> setErro(false), 1000);
-      }
+  // Função de login
+  const esperaLogin = () => {
+    if (!users || users.length === 0) {
+      toast.error("Carregando usuários...");
       return;
     }
-    
-   const handleClick = () => {
-    setShowLoginCard(true); 
+
+    if (!nome || !senha) {
+      toast.error("Preencha todos os campos!");
+      setErro(true);
+      setTimeout(() => setErro(false), 1000);
+      return;
+    }
+
+    const userEncontrado = users.find(
+      (user) => user.name === nome && user.password === senha
+    );
+
+    if (!userEncontrado) {
+      toast.error("Usuário ou senha incorretos!");
+      setErro(true);
+      setTimeout(() => setErro(false), 1000);
+      return;
+    }
+
+    // Se chegou aqui, login correto
+    setErro(false);
+    navigate("/home");
+  };
+
+  const handleClick = () => {
+    setShowLoginCard(true);
   };
 
   const Extender = () => {
     setExtend(!extend);
-  }
+  };
 
-   useEffect(() => {
-     const timer = setTimeout(() => {
-       setFadeOut(true); 
-       setLogoUp(true);
-       setTimeout(() => setShowLogin(true), 800); 
-      }, 2000); 
-      const timePop =  setTimeout(() => {
-        setShowPop(false);
-     }, 3000);
-     return () => clearTimeout(timer);
-   }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFadeOut(true);
+      setLogoUp(true);
+      setTimeout(() => setShowLogin(true), 800);
+    }, 2000);
+    const timePop = setTimeout(() => {
+      setShowPop(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
       {!showLogin ? (
         <div className={`container ${fadeOut ? "fadeOut" : ""}`}>
-
           <div className="content">
-
             <div className="topLeft"></div>
             <div className="bottomRight"></div>
 
-                <div className={`contentLogo ${showPop ? "popAnim" : ""} ${logoUp ? "moveUp" : ""}`}>
-                    <img className="LogoImg" src={ZeroHora} alt="Logo" />
-                    <h1>ZeroHora</h1>
-                    <p>COMUNICAÇÃO VISUAL</p>
-                </div>
+            <div
+              className={`contentLogo ${showPop ? "popAnim" : ""} ${
+                logoUp ? "moveUp" : ""
+              }`}
+            >
+              <img className="LogoImg" src={ZeroHora} alt="Logo" />
+              <h1>ZeroHora</h1>
+              <p>COMUNICAÇÃO VISUAL</p>
+            </div>
           </div>
         </div>
       ) : (
         <div className="loginForm slideUp flow">
-            <div className="contentLogo">
-                <img className="LogoImg" src={ZeroHora} alt="Logo" />
-                <h1>ZeroHora</h1>
-                <p>COMUNICAÇÃO VISUAL</p>
-            </div>
+          <div className="contentLogo">
+            <img className="LogoImg" src={ZeroHora} alt="Logo" />
+            <h1>ZeroHora</h1>
+            <p>COMUNICAÇÃO VISUAL</p>
+          </div>
 
-            <div className={`loginCard ${showLoginCard ? "show" : ""}`}>
-                <h2>Bem-Vindo</h2>
-                <p>
-                Olá! Faça login para gerenciar suas tarefas e acessar as
-                informações de logística. Estamos aqui para ajudar
-                </p>
-                    
-                <div className="buttons">
-                  <button onClick={handleClick} className="btnBlack">Entrar</button>
-                  <button onClick={handleClick} className="btnWhite">Registrar</button>
-                </div>
+          <div className={`loginCard ${showLoginCard ? "show" : ""}`}>
+            <h2>Bem-Vindo</h2>
+            <p>
+              Olá! Faça login para gerenciar suas tarefas e acessar as
+              informações de logística. Estamos aqui para ajudar
+            </p>
+
+            <div className="buttons">
+              <button onClick={handleClick} className="btnBlack">
+                Entrar
+              </button>
+              <button onClick={handleClick} className="btnWhite">
+                Registrar
+              </button>
+            </div>
           </div>
 
           <div className={`loginContainer ${showLoginCard ? "up" : ""}`}>
-              <div className="loginArea">
-                <input type="text" placeholder="Usuário" 
+            <div className="loginArea">
+              <input
+                type="text"
+                placeholder="Usuário"
                 className={`loginInput ${erro ? "treme" : ""}`}
-                value={nome} 
-                onChange={e => setNome(e.target.value)}/>
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+              />
 
-                <input 
-                type={mostrarSenha ? "text" : "password"} 
-                placeholder="Senha" 
+              <input
+                type={mostrarSenha ? "text" : "password"}
+                placeholder="Senha"
                 className={`loginInput ${erro ? "treme" : ""}`}
                 value={senha}
-                onChange={e=> setSenha(e.target.value)}/>
+                onChange={(e) => setSenha(e.target.value)}
+              />
 
-                <span className="mostrarSenha" onClick={() => setMostrarSenha(!mostrarSenha)}>
-                  {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
-                </span>
+              <span
+                className="mostrarSenha"
+                onClick={() => setMostrarSenha(!mostrarSenha)}
+              >
+                {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
+              </span>
 
-                <button className="forgotPassword">
-                  Esqueceu a Senha?
-                </button>
+              <button className="forgotPassword">Esqueceu a Senha?</button>
 
+              <button className="btnLog" onClick={esperaLogin}>
+                Entrar
+              </button>
 
-                <button className="btnLog"
-                  onClick={esperaLogin}
-                  >
-                  Entrar
-                </button>
-
-                <button className="btnSingUp"
-                  onClick={esperaLogin}
-                >                  
-                  Registrar
-                </button>
-
-
-              </div>
-            </div>  
+              <button className="btnSingUp" onClick={esperaLogin}>
+                Registrar
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </>

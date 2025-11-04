@@ -24,6 +24,14 @@ body, main, #root {
   padding-bottom: 0 !important;
 }
 
+button{
+  transition: transform 0.1s;
+}
+
+button:active {
+  transform: scale(0.97); 
+}
+
 .areaSeguraMobile {
   position: fixed;
   bottom: 0;

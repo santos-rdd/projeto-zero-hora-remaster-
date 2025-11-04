@@ -7,7 +7,7 @@ import ItemExpedidos from "../../components/itemExpedidos";
 import ItemRow from "../../components/itemRow";
 import { useState } from "react";
 import { useDatabase } from "../../(backEnd)/hooks/useDatabase";
-import toast from "react-hot-toast";
+import {toast, Toaster} from "react-hot-toast";
 
 export default function Estoque(){
 
@@ -19,6 +19,7 @@ export default function Estoque(){
     };
     return (
         <div className="along">
+            <Toaster />
             <h1 className="title">Estoque</h1>
 
             <CategoriaToggle toggle={receba}/>
