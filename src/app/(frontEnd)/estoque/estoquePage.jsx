@@ -27,9 +27,9 @@ export default function Estoque(){
             <DualSearch />
 
             <ItemExpedidos 
-            info3={<>Total.<br />disponível</>}
-            info4={<>Total.<br />alocado</>}
-            info5={<>Total.<br />físico</>} >
+            info3={<>Total <br />disponível</>}
+            info4={<>Total <br />alocado</>}
+            info5={<>Total <br />físico</>} >
             
                 {estoque.map((e)=>(
                     <ItemRow 
@@ -47,7 +47,7 @@ export default function Estoque(){
 
             <div className="dualButtons">
                 <button className="all history">
-                    Histórivo de <br/>Movimentações
+                    Histórico de <br/>Movimentações
                 </button> 
 
                 <button className="all stock">
