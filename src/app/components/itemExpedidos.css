@@ -1,7 +1,7 @@
 .itensExpedidos {
     width: 100%;
-    min-height: 200px;
-    max-height: 200px;
+    min-height: 300px;
+    max-height: 300px;
 
     justify-content: flex-start;
     border: 1px solid #ccc;
@@ -16,7 +16,7 @@
     border-bottom: 1px solid #ccc;
     width: 100%;
 
-    height: 15%;
+    height: 10%;
     padding-left: 10px;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -25,7 +25,8 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    font-weight: bold;
 }
 
 .opcoes {
@@ -38,19 +39,19 @@
     border: 1px solid #ccc;
 
     background: #e9e9e9;
-    height: 15%;
-    font-size: 0.8rem;
+    height: 10%;
     padding: 5px 0 5px 0;
+    
+    white-space: pre-line;
 }
 
 .opcoes p {
     width: 25%;
-    font-size: 0.8rem;
     text-align: center;
 }
 
 .carouselVertical {
-    max-height: 138px;
+    max-height: 237px;
     overflow-y: auto;
     scrollbar-width: thin;
 }

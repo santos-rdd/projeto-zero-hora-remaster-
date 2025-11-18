@@ -1,3 +1,7 @@
+.invisivel{
+    display: none;
+}
+
 .title{
     margin-top:10px;
 }
@@ -33,7 +37,46 @@
 }
 
 .buscarCodigo{
-    padding: 5px 10px 5px 10px;
+    padding: 5px 0;
+    width: 20%;
+    border-radius: 12px;
+
+    border: none;
+    background-color: black;
+    color: white;
+
+    margin-top: 15px;
+    margin-left: 40%;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+}
+
+@media(min-width: 768px) and (max-width:1024px){
+
+
+.campoBusca input{
+    border: none;
+    outline: none;
+    background-color: #ebebeb;
+    
+    border-radius: 30px;
+    padding: 10px 25px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.329);
+
+    font-size: 15px;
+    transition: all 0.3s ease;
+    width: 22%;
+}
+
+.pBuscar{
+    margin-top: 20px;
+    margin-left: 220px;
+    font-size: 0.8rem;
+}
+
+
+.buscarCodigo{
+    padding: 10px 15px 10px 15px;
     width: 25%;
     border-radius: 12px;
 
@@ -45,4 +88,6 @@
     margin-left: 38%;
     font-size: 0.8rem;
     margin-bottom: 20px ;
+}
+
 }

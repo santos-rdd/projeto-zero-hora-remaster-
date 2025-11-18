@@ -1,5 +1,5 @@
 
-.dualButtons{
+.oneButtons{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,12 +10,9 @@
 
 .history{
     background-color: orange;
-    padding: 10px 15px 10px 15px;
+    padding: 7px 20px 7px 20px;
+    width: 260px;
 }
-
-.stock{
-    padding: 15px 15px 15px 15px;
-} 
 
 .all{
     border: none;
@@ -28,11 +25,27 @@
     font-size: 0.8rem;
 }
 
-.along{
+.along1{
     height: 600px;
+    padding: 20px 20px 20px 20px;
+    display: flex;
+
+    gap: 20px;
+    flex-direction: column;
+    position: relative;
 }
 
 .title{
     font-size: 2.0rem;
+    margin-right: 15px;
+}
+
+.adapt{
+    position: absolute;
+    top: 33px;
+    left: 40px;
+
+    width: 30px;
+    height: 30px;
 }
 

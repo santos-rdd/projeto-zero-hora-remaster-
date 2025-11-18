@@ -1,10 +1,9 @@
-
-.divCustom{
+.divCustom {
     width: 100%;
-    height: 400px;
+    height: 800px;
 }
 
-.searchArea{
+.searchArea {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -17,107 +16,141 @@
     gap: 10px;
 }
 
-.searchArea h1{
+.h1Pedido{
+    margin-top: 0!important;
+}
+
+.searchArea h1 {
     margin-right: auto;
+    margin-top: 35px;
     font-size: 1.5rem;
 }
 
-.inp{
+.searchArea p{
+    margin-right: auto;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.pS{
+    color: rgba(0, 0, 0, 0.459);
+}
+
+.inp {
     border-radius: 7px;
     border: 1px solid rgb(155, 155, 155);
-    
 }
 
 .inp::placeholder {
     white-space: pre-line;
 }
 
-.client{
+.client {
     width: 100%;
 }
 
 .clinet p {
-    font-size: 0.8rem;
-}
-
-.clientInfo{
-    width: 100%;
-    min-height: 57px;
-    max-height: 57px;
-
-    font-size: 0.8rem;
-    padding: 8px 15px 5px 10px;
-}
-
-.clientInfo::placeholder{
-    color: rgb(151, 150, 150);
-}
-
-.searchProducts{
-    width: 100%;
-    height: auto;
-    
-}
-
-.searchProducts p {
     font-size: 0.9rem;
 }
 
-.pro{
+/* textarea do cliente */
+.clientInfo {
+    max-width: 354px;
+    min-width: 354px;
+
+    min-height: 71px;
+    max-height: 71px;
+
+    font-size: 0.9rem;
+    padding: 10px 5px 10px 5px;
+}
+
+.clientInfo::placeholder {
+    color: rgb(151, 150, 150);
+}
+
+
+
+
+
+
+
+
+
+
+.contInp{
     width: 100%;
-    padding: 7px 0 7px 0;
-}
-
-.inpCont{
-    position: relative;
     display: flex;
+    justify-content: center;
+    
     align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+    
+    padding-bottom: 25px;
+    height: auto;
 }
 
-.inpCont .icon{
-    position: absolute;
+.allInp{
+    Width: 354px;
+    height: 34px;
+    border: 1px solid #8786819c;
 
-    right: 10px;
-    width: 20px;
-    height: 20px;
-}
-
-.inpCont input{
-    border: 1px solid rgb(155, 155, 155);
-    border-radius: 8px;
-    color: rgb(151, 150, 150);
-
-    font-size: 0.8rem;
+    border-radius: 12px;
     padding-left: 10px;
+    margin-bottom: 5px;
 }
 
-.qtdInp{
-    border: 1px solid rgb(155, 155, 155);
-    border-radius: 8px;
-    color: rgb(151, 150, 150);
-
-    font-size: 0.8rem;
-    padding: 7px 9px 7px 9px;
-    width: 45%;
+.inp2P {
     margin-top: 10px;
 }
 
-.blackButton{
-    background-color: black;
-    color: white;
-    padding: 7px 30px 7px 30px;
-
-    border-radius: 15px;
-    border: none;
-    font-size: 0.8rem;
-
-    margin-left: 40px;
+.contInp h2{
+    margin-right: auto;
+    font-size: 0.9rem;
 }
 
+.btnPedido{
+    margin-top: 10px;
+    border-radius: 30px;
+    width: 182px;
 
+    height: 40px;
+    padding: 10px;
+    background-color: #FFCC2A;
 
+    border: none;
+    font-weight: bold;
+}
 
+.inp2P{
+    margin-bottom: 20px;
+}
 
+.btnExtrato{
+    margin-top: 20px;
+    border-radius: 30px;
+    width: 354px;
 
+    height: 40px;
+    padding: 10px;
+    background-color: #FFCC2A;
 
+    border: none;
+    font-weight: bold;
+}
 
+.divContT{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+.adapt1{
+    position: absolute;
+    top: 13px;
+    left: 20px;
+
+    width: 30px;
+    height: 30px;
+}

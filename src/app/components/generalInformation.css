@@ -128,10 +128,23 @@
 }
 
 .share{
-    width: 13px;
+    width: 14px;
+    margin-left: 10px;
 }
 
 .tres{
     width: 18px;
     filter: brightness(0) invert(1);
+}
+
+@media(min-width: 768px) and (max-width:1024px){
+
+.generalInformation {
+    width: 50%;
+    height: 180px;
+    background-color: black;
+
+    border-radius: 20px;
+}
+
 }

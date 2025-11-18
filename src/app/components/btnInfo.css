@@ -1,0 +1,154 @@
+/* Fundo escurecido suave */
+.fundoModal {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  backdrop-filter: blur(3px);
+}
+
+/* Corpo do modal */
+.HelpModal {
+  background: #111; 
+  color: #fff;
+  padding: 20px;
+
+  border-radius: 16px;
+  width: 340px;
+  max-width: 90%;
+
+  text-align: left;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease-in-out;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Botão de fechar */
+.btnHelp {
+  border: none;
+  background: none;
+  padding: 5px;
+
+  cursor: pointer;
+  outline: none;
+  position: absolute;
+
+  bottom: 1px;
+  right: 0px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.btnHelp:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+.cross {
+  width: 20px;
+  height: 20px;
+  filter: invert(1);
+}
+
+.description {
+  position: relative;
+  margin-bottom: 15px;
+}
+.description h2 {
+  font-size: 1.2rem;
+  color: #f1c40f; 
+  margin: 0;
+}
+.helpIntro {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 4px;
+}
+
+/* Lista de opções */
+.alignHelpers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  margin-top: 10px;
+}
+
+.alignHelpers p {
+  font-size: 0.95rem;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.05);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px 30px 10px 10px;
+
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.alignHelpers p:hover {
+  background-color: rgba(241, 196, 15, 0.15);
+  transform: translateX(4px);
+}
+
+.set {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  filter: invert(1);
+}
+
+
+/* Efeito de transição de tela */
+.helpContent {
+  position: relative;
+  overflow: hidden;
+  min-height: 260px;
+}
+
+.alignHelpers,
+.topicDetails {
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  width: 98%;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.topicDetails h3{
+  color: #f1c40f;
+  margin-bottom: 5px;
+}
+
+/* Entrada e saída */
+.slide-in {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.slide-out {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.topicDetails.slide-out {
+  transform: translateX(100%);
+}
+
+.backBtn{
+  margin-top: 15px;
+
+  padding: 5px 20px 5px 20px;
+  border-radius: 10px;
+  background-color: #f1c40f;
+}

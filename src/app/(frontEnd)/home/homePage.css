@@ -119,3 +119,13 @@
     top: 460px;
     left: 20px;
 }
+
+.podo{
+    position: absolute;
+    padding: 5px 10px 5px 10px;
+    background-color: orange;
+
+    right: 20px;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.301);
+}

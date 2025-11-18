@@ -8,8 +8,12 @@ import Movimentacoes from './app/(frontEnd)/movimentacoes/movimentacoesPage';
 import Estoque from './app/(frontEnd)/estoque/estoquePage'; 
 import Relatorios from './app/(frontEnd)/relatorios/reportPage'; 
 import Pedidos from './app/(frontEnd)/pedidos/pedidosPage'; 
+import Approve from "./app/(frontEnd)/approve/approve";
 
-// Importe da bibliotea Toast
+// Impedir que o usuario burle a area de login 😈
+import ProtectedRoute from "./app/(frontEnd)/protectedRoute/protectedRoute";
+
+// Importe da biblioteca Toast
 import { toast, Toaster } from "react-hot-toast";
 
 // Importações de estilos
@@ -21,19 +25,69 @@ import "./styles/animations.css";
 export default function App(){
     return (
         <>
-            {/* Importe de Toast */}
             <Toaster position="top-right" 
-            toastOptions={{
-                duration: 2000, 
-            }}/>
+                toastOptions={{
+                    duration: 2000, 
+                }}
+            />
+
             <Routes>
                 <Route path="/" element={<Navigate to="/login" replace/>}/>
                 <Route path="/login" element={<Login />}/>
-                <Route path="/home" element={<Home />}/>
-                <Route path="/movimentacoes" element={<Movimentacoes />}/>
-                <Route path="/estoque" element={<Estoque />}/>
-                <Route path="/relatorios" element={<Relatorios />}/>
-                <Route path="/pedidos" element={<Pedidos />}/>
+
+                <Route 
+                    path="/home" 
+                    element={
+                        <ProtectedRoute>
+                            <Home />
+                        </ProtectedRoute>
+                    } 
+                />
+
+                <Route 
+                    path="/movimentacoes" 
+                    element={
+                        <ProtectedRoute>
+                            <Movimentacoes />
+                        </ProtectedRoute>
+                    } 
+                />
+
+                <Route 
+                    path="/estoque" 
+                    element={
+                        <ProtectedRoute>
+                            <Estoque />
+                        </ProtectedRoute>
+                    } 
+                />
+
+                <Route 
+                    path="/relatorios" 
+                    element={
+                        <ProtectedRoute>
+                            <Relatorios />
+                        </ProtectedRoute>
+                    } 
+                />
+
+                <Route 
+                    path="/pedidos" 
+                    element={
+                        <ProtectedRoute>
+                            <Pedidos />
+                        </ProtectedRoute>
+                    } 
+                />
+
+                <Route 
+                    path="/approve" 
+                    element={
+                        <ProtectedRoute>
+                            <Approve />
+                        </ProtectedRoute>
+                    } 
+                />
             </Routes>
         </>
     )

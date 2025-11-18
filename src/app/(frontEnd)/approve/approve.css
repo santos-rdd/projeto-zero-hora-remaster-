@@ -1,0 +1,58 @@
+.divwe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    align-items: center;
+    height: 100vh; 
+    background: linear-gradient(135deg, #eceae6 0%, #dba53f 100%);
+
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.msgCont {
+    background-color: rgba(2, 2, 2, 0.781);
+    padding: 20px 60px;
+    border-radius: 15px;
+    
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    animation: fadeIn 1s ease-out;
+}
+
+.msgConf {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.iconHora {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iconHora img {
+    width: 80px;
+    margin-bottom: 10px;
+    animation: bounce 1s infinite alternate;
+}
+
+.iconHora p {
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    color: black;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}

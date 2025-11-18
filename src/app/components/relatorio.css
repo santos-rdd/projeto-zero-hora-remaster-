@@ -1,0 +1,44 @@
+
+.faturamento{
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: row;
+    position: relative;
+    margin-top: 30px;
+}
+
+.border{
+    height: 80px;
+    width: 10px;
+    background-color: black;
+
+    border-radius: 30px;
+    position: absolute;
+    left: 0;
+}
+
+.conteinerInfos1{
+    width: 100%;
+    padding: 0 0 0 8px;
+}
+
+.allInfos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: row;
+    width: 100%;
+    padding: 0px 0px 0px 15px; 
+}
+
+.allInfos p{
+    width: 50%;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.411);
+}

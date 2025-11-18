@@ -12,24 +12,18 @@ export default function CategoriaToggle (props){
 
     return (
 
-    <div className="categoriaToggle">
-        <button className={`basic rawMaterial
-        ${ativo === "ativo" ? "ativo" : ""}`}
-        onClick={
-            () => {
-            button("ativo");
-            }}>
-            Matérias-Primas
-        </button>
+    <div className="divy">
+        <div className="categoriaToggle">
+            <div className={`basic rawMaterial
+            ${ativo === "ativo" ? "ativo" : ""}`}
+            onClick={
+                () => {
+                button("ativo");
+                }}>
+                Matérias-Primas
+            </div>
+    </div>    
 
-        <button className={`basic finishedProducts
-        ${ativo === "inativo" ? "ativo" : ""}`}
-        onClick={
-            () => {
-            button("inativo");
-            }}>
-            Produtos Acabados
-        </button>
 
     </div>
     )

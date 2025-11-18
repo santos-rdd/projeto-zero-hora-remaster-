@@ -7,56 +7,82 @@ import ItemExpedidos from "../../components/itemExpedidos";
 import ItemRow from "../../components/itemRow";
 import { useState } from "react";
 import { useDatabase } from "../../(backEnd)/hooks/useDatabase";
-import {toast, Toaster} from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
+import EstoqueAlt from "../../components/estoqueAlt";
+import CarouselQtd from "../../components/carouselQtd";
+import Back from "../../../assets/images/icons/back.png";
 
-export default function Estoque(){
+export default function Estoque() {
 
-    const [butter, setButter] = useState("");
+    const [mov, setMov] = useState(true);
     const estoque = useDatabase("itensRecebidos2");
 
     const receba = (tog) => {
-        setButter(tog);
+        setMov(tog);
     };
+
     return (
-        <div className="along">
-            <Toaster />
-            <h1 className="title">Estoque</h1>
+        <>
+            {mov ? (
+                <div className="along">
+                    <Toaster />
+                    <h1 className="title">Estoque</h1>
 
-            <CategoriaToggle toggle={receba}/>
+                    <CategoriaToggle toggle={receba} />
 
-            <DualSearch />
+                    <DualSearch 
+                    title="Buscar por:"
+                    btnAtt={true}/>
 
-            <ItemExpedidos 
-            info3={<>Total <br />disponível</>}
-            info4={<>Total <br />alocado</>}
-            info5={<>Total <br />físico</>} >
-            
-                {estoque.map((e)=>(
-                    <ItemRow 
-                        key={e.id}
-                        i1={e.cod}
-                        i2={e.item}
-                        i3={e.totalAlocado}
-                        i4={e.totalDisponivel}
-                        i5={e.totalFisico}
-                        />
-                ))}
+                    <ItemExpedidos
+                        info3={<>Total <br />disponível</>}
+                        info4={<>Total <br />alocado</>}
+                        info5={<>Total <br />físico</>}
+                    >
+                        {estoque.map((e) => (
+                            <ItemRow
+                                key={e.id}
+                                i1={e.cod}
+                                i2={e.item}
+                                i3={e.totalAlocado}
+                                i4={e.totalDisponivel}
+                                i5={e.totalFisico}
+                            />
+                        ))}
+                    </ItemExpedidos>
+
+                    <div className="oneButtons">
+                        <button className="all history"
+                        onClick={() => setMov(false)}>
+                            Histórico de <br /> Movimentações
+                        </button>
+                    </div>
+                </div>
+
+
+            ) : (
+
+
+                <div className="along1">
+                    <Toaster />
+                    <h1 className="title">Estoque</h1>
+
+                    <img className="adapt tranform" 
+                    src={Back} alt="Voltar" 
+                    onClick={()=> setMov(true)}/>
+
+                    <DualSearch 
+                    title="Alternar por:"
+                    btnAtt={false}/>
                 
 
-            </ItemExpedidos>
+                    <EstoqueAlt className="corrections"/>
 
-            <div className="dualButtons">
-                <button className="all history">
-                    Histórico de <br/>Movimentações
-                </button> 
-
-                <button className="all stock">
-                    Ajustar Estoque
-                </button>
-            </div>
-            
+                    <CarouselQtd/>
+                </div>
+            )}
 
             <BottomNav />
-        </div>
-    )
+        </>
+    );
 }

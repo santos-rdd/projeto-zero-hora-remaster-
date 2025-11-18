@@ -8,10 +8,14 @@ import toast, { Toaster } from "react-hot-toast";
 export default function CarouselQtd (props){
 
     const itensAd = useDatabase("itensAdicionados");
-    const { adicionarValor, adicionarProdutos  } = useFaturamento(); 
+    const { adicionarValor, adicionarProdutos  } = useFaturamento();
+    
     const [ total, setTotal ] = useState({});
     const [ reset, setReset ] = useState(false);
     const [carregando, setCarregando] = useState(false);
+
+    const Alteracao = props.Alteracao;
+    const setState = props.setState;
 
     
     const atualizarItem = (id, quantidade, totalItem) => {
@@ -31,7 +35,7 @@ export default function CarouselQtd (props){
 
     if (carregando) return; 
     setCarregando(true);
-    toast.success("Pedido confirmado!", { id: "pedido" });
+    // toast.success("Pedido confirmado!", { id: "pedido" });
 
     try {
         await adicionarValor(totalPedido);
@@ -51,7 +55,7 @@ export default function CarouselQtd (props){
                             <div className="containerCarousel">
         
                                 <div className="descrip">
-                                    <p>Itens Adicionados</p>
+                                    <p>Itens</p>
                                 </div>
         
                                 <div className="moreDescrip">
@@ -103,10 +107,11 @@ export default function CarouselQtd (props){
                                             toast.error("Adicione pedidos antes de confirmar!");
                                             } else {
                                             confirmar();
+                                            setState(true);
                                             }
                                           }}
                                         >
-                                            Confirmar Pedido
+                                            Confirmar 
                                         </button>
 
                                         <button className="btnAll btn2">

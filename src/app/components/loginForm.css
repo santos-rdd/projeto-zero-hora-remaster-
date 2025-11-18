@@ -1,8 +1,10 @@
+
+   
+    
 .flow {
     overflow: hidden;
 }
 
-/* Cotainer */
 .container {
     height: 100vh;
     background-color: #ffffff;
@@ -27,7 +29,6 @@
 
 .loginCard {
     width: 100%;
-    max-width: 400px;
     background-color: #ffd000;
 
     position: absolute;
@@ -100,7 +101,7 @@
     
     justify-content: flex-start;
     padding-top: 40%;
-}
+}    
 
 .popAnim {
     animation: pop 0.6s ease;
@@ -158,12 +159,10 @@
 .loginContainer {
     width: 100%;
     margin: 50px auto;
-    font-family: Arial, sans-serif;
-
     position: absolute;
-    top: 100vh;
-    z-index: 99;
 
+    top: 95%;
+    z-index: 99;
     transition: transform 1.5s ease, opacity 1.5s ease;
 }
 
@@ -172,99 +171,134 @@
     opacity: 1;
 }
 
-/* Card de login */
-.loginArea {
-    background-color: #fff;
-    padding: 30px 25px;
-    border-radius: 15px;
 
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    display: flex;
+/* ----------------------------------------------------------------*/
+/* Correções de estilo */
+/* Para tablets */
+
+@media(min-width: 768px) and (max-width:1024px){
+    
+.contentLogo {
     flex-direction: column;
+    height: 100vh;
+    display: flex;
 
-    gap: 15px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-
-    transform: translateY(50px);
-
+    transition: transform 0.8s ease;
+    transform: translateY(-80px);
+    align-items: center;
+    
+    justify-content: flex-start;
+    padding-top: 20%;
+}    
 }
 
-/* Inputs */
-.loginInput {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 25px;
 
-    outline: none;
-    font-size: 0.9rem;
-    background-color: #f5f5f5;
+/* ----------------------------------------------------------------*/
+
+/* Tela grande */
+
+.divz{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden; 
 }
 
-/* Link de esqueci a senha */
-.forgotPassword {
-    align-self: flex-end;
-    font-size: 0.8rem;
-    color: #555;
 
-    text-decoration: none;
-    margin-bottom: 10px;
-    border: none;
+.loginForm1 {
+    display: flex;
+    justify-content: center;
+
+    height: 100vh;
+    background-color: #ffffff;
+}
+  
+.flow1 {
+    overflow: hidden;
 }
 
-.forgotPassword:hover {
-    text-decoration: underline;
+
+.contentLogo1 {
+    flex-direction: column;
+    height: 100vh;
+    display: flex;
+
+    transition: transform 0.8s ease;
+    transform: translateY(-80px);
+    align-items: center;
+    
+    justify-content: flex-start;
+    padding-top: 10%;
 }
 
-/* Botões */
-.btnLog,
-.btnSingUp {
-    padding: 12px 0;
-    border-radius: 25px;
-    border: none;
+.LogoImg1 {
+    width: 110px;
+    height: 100px;
+}
 
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 0.95rem;
 
-    transition: all 0.3s ease;
+@keyframes slideUp1 {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slideUp1 {
+    animation: slideUp1 1s ease forwards;
+}
+
+.camp{
+    width: 50%;
+}
+
+.loginCard1 {
+    width: 100%;
+    background-color: #ffd000;
+
+    position: absolute;
+    bottom: 0;
+
+    border-radius: 20px 20px 0 0;
+    padding: 40px 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+
     text-align: center;
+    transform: translateY(5px);
+    transition: transform 1.5s ease, opacity 1.5s ease;
+
+    z-index: 98;
+    height: 340px;
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: center;
 }
 
-.btnLog {
-    background-color: #000;
-    color: #fff;
+
+.loginCard1.show {
+    transform: translateY(-260px);
+    opacity: 1;
 }
 
-.btnLog:hover {
-    background-color: #333;
-}
-
-.btnSingUp {
-    background-color: #fff;
+.loginCard1 h2 {
+    margin: 0 0 10px;
+    font-size: 1.8rem;
+    font-weight: bold;
     color: #000;
-    border: 1px solid #ddd;
 }
 
-.btnSingUp:hover {
-    background-color: #f0f0f0;
+.loginCard1 p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 30px;
 }
-
-.mostrarSenha {
-  position: absolute;
-  right: 40px;
-  top: 98px;
-  cursor: pointer;
-
-  font-size: 1.2rem;
-  user-select: none;
-  color: #666;
-
-  transition: color 0.2s;
-}
-
-.mostrarSenha:hover {
-  color: #000;
-}
-
-

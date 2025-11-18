@@ -5,6 +5,8 @@ import { useState } from "react";
 export default function DualSearch(props){
 
   const[tremedinha, setTreme] = useState("");
+  const title = props.title;
+  const btnAtt = props.btnAtt;
 
   function tost(){
     if(!name || !cod){
@@ -21,7 +23,7 @@ export default function DualSearch(props){
 
     return (
         <div>
-          <p className="pBuscar">Buscar por: </p>
+          <p className="pBuscar">{ title }</p>
 
             <div className="campoBusca flex">
 
@@ -39,7 +41,7 @@ export default function DualSearch(props){
                 onChange={c => setCod(c.target.value)}/>
             </div>
 
-            <button className="buscarCodigo"
+            <button className={`buscarCodigo ${btnAtt ? "" : "invisivel"}`}
             onClick={()=>tost()}>
               Buscar
             </button>

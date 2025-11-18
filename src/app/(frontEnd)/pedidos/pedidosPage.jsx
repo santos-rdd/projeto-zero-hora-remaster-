@@ -3,72 +3,148 @@ import "./pedidosPage.css";
 import CarouselQtd from "../../components/carouselQtd";
 import BarCode from "../../../assets/images/icons/barCode.png";
 import { toast, Toaster } from "react-hot-toast";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import EstoqueAlt from "../../components/estoqueAlt";
+import Relatorio from "../../components/relatorio";
+import Back from "../../../assets/images/icons/back.png";
+import ItemExpedidos from "../../components/itemExpedidos";
+import ItemRowPedidos from "../../components/itemRowPedidos";
 
 export default function Pedidos (props){
 
-    const [ inp1V, setInp1V ] = useState("");
-    const [ inp2V, setInp2V ] = useState("");
-    const [ textA, setText ] = useState("");
-    const [ tremedinha, setTreme ] = useState(false);
+    const [ pag1, setPage1 ] = useState(true);
+    const [ state, setState ] = useState(false);
     
-    function inpV (){
-        if( !inp1V && !inp2V){
-            toast.error("Preencha um campo para fazer uma busca!");
-            setTreme(true);
-                setTimeout(()=>{
-                    setTreme(false);
-                },500);
-        }
-    }
+    useEffect(() => {
+    window.scrollTo(0, 0);
+    }, [pag1, state]);
 
     return (
+        <>
+        <Toaster />
+        { pag1 ? (
         <div className="divCustom">
-            <Toaster />
             <div className="searchArea">
-                    <h1>Pedidos</h1>
+                <h1 className="h1Pedido">Novo Pedido</h1>
 
-                <div className="client">
-                    <p>Cliente</p>
-                    <textarea 
-                    value={textA}
-                    onChange={t => setText(t.target.value)}
-                    className={`inp clientInfo ${tremedinha ? "treme" : ""}`}
-                    placeholder={
-                        "Nome: João Silva \n E-mail: joaosilva@hotmail.com \n Telefone: (99) 9 9999-9999"
-                    }/>
-                </div>
+            <div className="contInp">
+                <h2>Usuário</h2>
+                  <input 
+                    type="text" 
+                    placeholder="Nome" 
+                    // value={inp3} 
+                    // onChange={e => setInp3(e.target.value)}
+                    className={`allInp inp1P`} 
+                />
 
-                <div className="searchProducts">
+                  <input 
+                    type="text" 
+                    placeholder="CPF" 
+                    // value={inp3} 
+                    // onChange={e => setInp3(e.target.value)}
+                    className={`allInp inp2P`} 
+                />
 
-                    <p>Buscar Produtos</p>
+                <button className="btnPedido"
+                onClick={()=> setPage1(false)}>
+                    Iniciar Pedido
+                </button>
+            </div>
+            
+            <ItemExpedidos 
+            info1={`Num.\n do Pedido`}
+            info2="Fornecedor"
+            info3="Data"
+            info4="Valor">
 
-                    <div className="inpCont">
+                <ItemRowPedidos />
+            </ ItemExpedidos>
+              
+            </div>
+        </div> 
+        ) : state ? (
 
-                        <input type="text" 
-                        className={`inp pro ${tremedinha ? "treme" : ""}`} 
-                        placeholder="Busque por nome ou cód."
-                        value={inp1V}
-                        onChange={i => setInp1V(i.target.value)}/>
+           <div className="divCustom">
+            <div className="searchArea">
+                <h1>Pedidos N°00001</h1>
+                <p className="pS">R$ 328,07</p>
 
-                        <img src={ BarCode } alt="codigo de barra" className="icon" />
+                 <img className="adapt1 tranform" 
+                    src={Back} alt="Voltar" 
+                    onClick={()=> setState(false)}/>
+
+                <Relatorio 
+                setState="setState"/>
+
+                <div className="contInp">
+                    <h2>Cliente</h2>
+                    <div className="divContT">
+                        <textarea
+                            placeholder={`Nome: João da Silva\nE-mail: joãosilva@gmail.com\nTelefone: (35) 99999-9999`}
+                            className={`allInp clientInfo`}
+                            rows="5"
+                        />
+
+                    <h2>Itens do Pedido</h2>
+                        <textarea
+                            placeholder={`-3000 und.folhas A5 150g\n-2 und.Banner Lona 90g 120 cm`}
+                            className={`allInp clientInfo`}
+                            rows="5"
+                        />
                     </div>
 
-                    <input type="text" 
-                    className={`inp qtdInp ${tremedinha ? "treme" : ""}`}
-                    placeholder="Quantidade" 
-                    value={inp2V}
-                    onChange={n => setInp2V(n.target.value)}/>
+                    <p>Detalhes</p>
+                    <button className="btnExtrato"
+                    >
+                        Ver Extrato Completo 
+                    </button>
 
-                    <button className="blackButton"
-                    onClick={()=> inpV()}>Buscar</button>
-                </div>
-
-
+                    <button className="btnExtrato"
+                    >
+                        Ver Nota Fiscal 
+                    </button>
+                </div>  
             </div>
-                <CarouselQtd />
+        </div> 
 
+        ) : (
+            <div className="divCustom">
+                <div className="searchArea">
+                    <h1>Pedidos</h1>
+
+                    <img className="adapt1 tranform" 
+                    src={Back} alt="Voltar" 
+                    onClick={()=> setPage1(true)}/>
+
+                <div className="contInp">
+                    <h2>Solicitação</h2>
+                    <textarea
+                        placeholder={`Nome: João da Silva\nE-mail: joãosilva@gmail.com\nTelefone: (35) 99999-9999`}
+                        className={`allInp clientInfo`}
+                        rows="5"
+                    />
+                        {/* // value={inp3} 
+                        // onChange={e => setInp3(e.target.value)} */}
+
+                    <input 
+                        type="text" 
+                        placeholder="CPF" 
+                        // value={inp3} 
+                        // onChange={e => setInp3(e.target.value)}
+                        className={`allInp inp2P`} 
+                    />
+
+                    <EstoqueAlt className="corrections"/>
+                </div>
+                
+                <CarouselQtd
+                setState={setState}
+                />
+                
+                </div>
+        </div> 
+        )}
             <BottomNav />
-        </div>
+        </>
     )
 }

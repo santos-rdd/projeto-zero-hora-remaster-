@@ -1,0 +1,21 @@
+
+.itemRow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: row;
+    width: 100%;
+}
+
+.itemRow p{
+    width: 25%;
+    height: 53px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgba(0, 0, 0, 0.514);
+    font-size: 0.8rem;
+}

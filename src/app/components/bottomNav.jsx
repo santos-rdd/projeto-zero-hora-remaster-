@@ -4,51 +4,61 @@ import Girar from "../../assets/images/icons/arrows.png";
 import Pedido from "../../assets/images/icons/testing.png";
 import Relatorio from "../../assets/images/icons/document.png";
 import Home from "../../assets/images/icons/home.png";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-export default function BottomNav (){
+export default function BottomNav() {
     return (
         <div className="flex bottomDiv">
 
             <div className="flex icons">
-                <Link className="Link invert"
-                to="/estoque">
+                <NavLink
+                    to="/estoque"
+                    className={({ isActive }) => `navlink invert1 ${isActive ? "selecionado" : ""}`}
+                >
                     <img src={Estoque} alt="Estoque" />
                     <p>Estoque</p>
-                </Link>
+                </NavLink>
             </div>
 
             <div className="flex icons">
-                <Link className="Link invert"
-                to="/movimentacoes">
+                <NavLink
+                    to="/movimentacoes"
+                    className={({ isActive }) => `navlink invert1 ${isActive ? "selecionado" : ""}`}
+                >
                     <img src={Girar} alt="Movimentações" />
                     <p>Movimentações</p>
-                </Link>
+                </NavLink>
             </div>
 
             <div className="flex icons">
-                <Link className="home invert"
-                to="/home">
-                        <img src={Home} alt="Pagina pricipal" />
-                </Link>
+                <NavLink
+                    to="/home"
+                    className={({ isActive }) => `navlink1 invert1 ${isActive ? "selecionado" : ""}`}
+                >
+                    <img className="home" src={Home} alt="Página principal" />
+                </NavLink>
             </div>
 
             <div className="flex icons">
-                <Link className="Link invert" 
-                to="/pedidos">
+                <NavLink
+                    to="/pedidos"
+                    className={({ isActive }) => `navlink invert1 ${isActive ? "selecionado" : ""}`}
+                >
                     <img src={Pedido} alt="Pedidos" />
                     <p>Pedidos</p>
-                </Link>
+                </NavLink>
             </div>
 
             <div className="flex icons">
-                <Link className="Link invert" 
-                to="/relatorios">
+                <NavLink
+                    to="/relatorios"
+                    className={({ isActive }) => `navlink invert1 ${isActive ? "selecionado" : ""}`}
+                >
                     <img src={Relatorio} alt="Relatórios" />
                     <p>Relatórios</p>
-                </Link>
+                </NavLink>
             </div>
 
         </div>
-    )
+    );
 }

@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useDatabase } from "../(backEnd)/hooks/useDatabase";
 import { db } from "../(backEnd)/firebaseAdm";
 import { doc, getDoc } from "firebase/firestore";
+import Pdf from "../../assets/images/icons/pdf.png";
 
 export default function OverView (props) {
     const title = props.title || "Visão Geral";
@@ -48,6 +49,13 @@ export default function OverView (props) {
     return (
         <div className="infos">
             <h1>{title}</h1>
+
+            <div className="pdfImg">
+                <img src={Pdf} alt="Exportar para PDF" 
+                className="pdf" />
+                <p>Exportar</p>
+            </div>
+
             <div className="group info1">
                 <div className="contp">{description1}</div>
                 <div className="contItems">
