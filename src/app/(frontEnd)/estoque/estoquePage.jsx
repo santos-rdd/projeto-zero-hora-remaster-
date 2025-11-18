@@ -7,7 +7,7 @@ import ItemExpedidos from "../../components/itemExpedidos";
 import ItemRow from "../../components/itemRow";
 import { useState } from "react";
 import { useDatabase } from "../../(backEnd)/hooks/useDatabase";
-import { toast, Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import EstoqueAlt from "../../components/estoqueAlt";
 import CarouselQtd from "../../components/carouselQtd";
 import Back from "../../../assets/images/icons/back.png";
@@ -25,7 +25,6 @@ export default function Estoque() {
         <>
             {mov ? (
                 <div className="along">
-                    <Toaster />
                     <h1 className="title">Estoque</h1>
 
                     <CategoriaToggle toggle={receba} />
@@ -64,7 +63,6 @@ export default function Estoque() {
 
 
                 <div className="along1">
-                    <Toaster />
                     <h1 className="title">Estoque</h1>
 
                     <img className="adapt tranform" 

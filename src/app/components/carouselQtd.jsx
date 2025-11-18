@@ -3,7 +3,7 @@ import NewItemRow from "./newItemRow";
 import { useState, useEffect } from "react";
 import { useDatabase } from "../(backEnd)/hooks/useDatabase";
 import { useFaturamento } from "../(backEnd)/hooks/useFaturamento";
-import toast, { Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 export default function CarouselQtd (props){
 
@@ -51,7 +51,6 @@ export default function CarouselQtd (props){
 
     return (
                         <div className="containerItems">
-                            <Toaster />
                             <div className="containerCarousel">
         
                                 <div className="descrip">

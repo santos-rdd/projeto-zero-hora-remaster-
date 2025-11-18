@@ -154,3 +154,42 @@
     width: 30px;
     height: 30px;
 }
+
+
+
+
+
+
+
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #878681a4;
+
+  padding: 10px 0 10px 10px;
+  margin-bottom: 10px;
+}
+
+.inputGroup input {
+  border: none;
+  border-bottom: 1px solid #e4e4e4;
+  width: 344px;
+
+  height: 14px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.inputGroup input:last-child {
+  border-bottom: none;
+}
+
+.inputGroup input:focus {
+  outline: none;
+ 
+}

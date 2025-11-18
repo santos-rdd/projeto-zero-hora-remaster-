@@ -28,7 +28,11 @@ export default function App(){
             <Toaster position="top-right" 
                 toastOptions={{
                     duration: 2000, 
+                    style: {
+                        zIndex: 999999,
+                    },
                 }}
+            
             />
 
             <Routes>

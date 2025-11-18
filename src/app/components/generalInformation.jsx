@@ -3,7 +3,7 @@ import Share from "../../assets/images/icons/share.png";
 import { db } from "../(backEnd)/firebaseAdm";
 import { collection, query, where, getDocs, doc, getDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
-import { toast, Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import jsPDF from "jspdf";
 
 export default function GeneralInformation() {
@@ -79,7 +79,6 @@ export default function GeneralInformation() {
 
   return (
     <div className="generalInformation">
-      <Toaster />
       <div className="cotent1">
         <p>Informações Gerais</p>
         <img src={Share} alt="Compartilhar" className="share invert" onClick={gerarOuEnviar} />

@@ -24,6 +24,12 @@ body, main, #root {
   padding-bottom: 0 !important;
 }
 
+[data-rht-toaster] {
+    z-index: 999999 !important;
+    pointer-events: none !important;
+    position: fixed !important;
+}
+
 button{
   transition: transform 0.1s;
 }

@@ -4,7 +4,7 @@ import ItemExpedidos from "../../components/itemExpedidos";
 import ItemRow from "../../components/itemRow";
 import { useDatabase } from "../../(backEnd)/hooks/useDatabase";
 import { useState, useEffect } from "react";
-import {toast, Toaster} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { addDoc, collection } from "firebase/firestore";
 
 export default function Movimentacoes (){
@@ -42,7 +42,6 @@ export default function Movimentacoes (){
         { pag ? (
 
         <div className="divw">
-            <Toaster />
             <div className="flex movimentacoesContainer">
                 <h1>Movimentações</h1>
 
@@ -146,8 +145,7 @@ export default function Movimentacoes (){
                 ) : (
 
 
-                        <div className="divw">
-            <Toaster />
+        <div className="divw">
             <div className="flex movimentacoesContainer">
                 <h1>Movimentações</h1>
 

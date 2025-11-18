@@ -1,11 +1,12 @@
 .bottomDiv {
     background-color: black;
-    height: 10%;
+    height: 71px;
     position: fixed;
 
     bottom: 0;
     width: 100%;
     flex-direction: row;
+    z-index: 999;
 }
 
 .icons {

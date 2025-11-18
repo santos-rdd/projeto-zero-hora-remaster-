@@ -5,7 +5,7 @@ import "./loginForm.css";
 import "../../styles/effects.css";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import NewUser from "./newUser";
+import NewUser from "./newUser.jsx";
 import bcrypt from "bcryptjs";
 
 export default function LoginForm() {
