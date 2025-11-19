@@ -6,7 +6,6 @@ import EstoqueAlert from "../../components/estoqueAlert";
 import LatestProjects from "../../components/latestProjects";
 import { Link } from "react-router-dom";
 
-import Glass from "../../../assets/images/icons/glass.png";
 import Notification from "../../../assets/images/icons/notification.png";
 
 import { useDatabase } from "../../(backEnd)/hooks/useDatabase";
@@ -29,12 +28,6 @@ export default function Home() {
                         <h2>Carregando informações...</h2>
                     )}
                     <div className="headerButtons">
-                        <button className="btnIcon"> 
-                            <img src={Glass} alt="Lupa" />
-                        </button>
-                        <button className="btnIcon">
-                            <img src={Notification} alt="Notificações" />
-                        </button>
                         <button className="btnIcon">
                             <BtnInfo />
                         </button>
@@ -54,12 +47,6 @@ export default function Home() {
                     ))}
                 </div>
 
-                <p className="pzin2">Últimos Projetos</p>
-                <div className="carouselSection2">
-                    <LatestProjects />
-                    <LatestProjects />
-                    <LatestProjects />
-                </div>
 
             </div>
             <BottomNav />

@@ -29,7 +29,7 @@ export default function DualSearch(props){
 
                 <input className={`nomeProduto ${tremedinha}`}
                 type="text" name="Nome" id="Nome" value={name}
-                placeholder="Nome" 
+                placeholder="Item" 
                 onChange={n => setName(n.target.value)}
                 />
 

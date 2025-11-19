@@ -50,12 +50,6 @@ export default function OverView (props) {
         <div className="infos">
             <h1>{title}</h1>
 
-            <div className="pdfImg">
-                <img src={Pdf} alt="Exportar para PDF" 
-                className="pdf" />
-                <p>Exportar</p>
-            </div>
-
             <div className="group info1">
                 <div className="contp">{description1}</div>
                 <div className="contItems">

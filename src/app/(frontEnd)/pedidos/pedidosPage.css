@@ -193,3 +193,21 @@
   outline: none;
  
 }
+
+
+.clienteDiv{
+    width: 354px;
+    border: 1px solid #8786819c;
+    border-radius: 10px;
+
+    height: 61px;
+    padding: 10px;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    color:rgb(151, 150, 150);
+    margin-bottom: 15px;
+}

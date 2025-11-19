@@ -1,18 +1,17 @@
 import "./generalInformation.css";
 import Share from "../../assets/images/icons/share.png";
 import { db } from "../(backEnd)/firebaseAdm";
-import { collection, query, where, getDocs, doc, getDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import jsPDF from "jspdf";
+import ZeroHoraBase64 from "../../assets/images/icons/zeroHora.png"; // ícone funciona como antes
 
 export default function GeneralInformation() {
-  const hoje = new Date();
-  const idMesAtual = `${hoje.getFullYear()}-${String(hoje.getMonth() + 1).padStart(2, "0")}`;
-
   const [pedidos, setPedidos] = useState(0);
   const [pedConcluidos, setPedidosConc] = useState(0);
   const [pedidosProgreso, setPedidosProg] = useState(0);
+  const [pedidosLista, setPedidosLista] = useState([]);
 
   const [msgPedidos, setMsgPedidos] = useState(false);
   const [msgConcluidos, setMsgConcluidos] = useState(false);
@@ -21,18 +20,17 @@ export default function GeneralInformation() {
   useEffect(() => {
     async function carregarDados() {
       try {
-        const ref = doc(db, "faturamentoMensal", idMesAtual);
-        const snap = await getDoc(ref);
-        if (snap.exists()) setPedidos(snap.data().produtos || 0);
+        const pedidosRef = collection(db, "pedidosCriados");
+        const snap = await getDocs(pedidosRef);
+        const lista = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setPedidosLista(lista);
+        setPedidos(lista.length);
 
-        const pedidosRef = collection(db, "itensRecebidos");
-        const [naoConf, conf] = await Promise.all([
-          getDocs(query(pedidosRef, where("status", "==", "Não conferido"))),
-          getDocs(query(pedidosRef, where("status", "==", "Conferido")))
-        ]);
+        const pendentes = lista.filter(p => p.status === "pendente").length;
+        const concluidos = lista.filter(p => p.status === "concluido").length;
 
-        setPedidosConc(naoConf.size);
-        setPedidosProg(conf.size);
+        setPedidosProg(pendentes);
+        setPedidosConc(concluidos);
       } catch (err) {
         console.error("Erro ao buscar dados:", err);
       }
@@ -41,24 +39,84 @@ export default function GeneralInformation() {
   }, []);
 
   function gerarPDF() {
-    const doc = new jsPDF();
-    doc.setFontSize(16);
-    doc.text("Resumo de Pedidos", 10, 10);
+    if (msgConcluidos || msgEmProgresso) {
+      toast.error("Trabalhando nisso!");
+      return; // não gera PDF
+    }
 
-    let y = 25;
-    if (msgPedidos) { doc.text(`Total de pedidos: ${pedidos}`, 10, y); y += 10; }
-    if (msgConcluidos) { doc.text(`Pedidos concluídos: ${pedConcluidos}`, 10, y); y += 10; }
-    if (msgEmProgresso) { doc.text(`Pedidos em progresso: ${pedidosProgreso}`, 10, y); }
+    const doc = new jsPDF();
+    doc.setFontSize(18);
+    doc.text("Relatório de Pedidos - ZeroHora", 10, 15);
+
+    // Ícone da ZeroHora no canto superior direito
+    doc.addImage(ZeroHoraBase64, "PNG", 160, 10, 40, 20);
+
+    let y = 30;
+    doc.setFontSize(12);
+    doc.text("Olá! Resumo dos pedidos do sistema ZeroHora.", 10, y);
+    y += 10;
+
+    if (msgPedidos) {
+      doc.setFont(undefined, "bold");
+      doc.text("Entradas (Pedidos Criados):", 10, y);
+      doc.setFont(undefined, "normal");
+      y += 7;
+
+      if (pedidosLista.length === 0) {
+        doc.text("Nenhum pedido encontrado.", 10, y);
+        y += 10;
+      } else {
+        pedidosLista.forEach(p => {
+          const clienteNome = p.cliente?.nome || "-";
+          const clienteEmail = p.cliente?.email || "-";
+          const clienteTelefone = p.cliente?.telefone || "-";
+
+          doc.setFont(undefined, "bold");
+          doc.text(`Pedido Nº: ${p.numeroPedido || "-"}`, 10, y);
+          y += 6;
+
+          doc.setFont(undefined, "normal");
+          doc.text(`Cliente: ${clienteNome}`, 10, y);
+          doc.text(`Email: ${clienteEmail}`, 10, y + 6);
+          doc.text(`Telefone: ${clienteTelefone}`, 10, y + 12);
+          y += 18;
+
+          doc.setFont(undefined, "bold");
+          doc.text("Item", 10, y);
+          doc.text("Qtd", 100, y);
+          doc.text("Total", 140, y);
+          doc.setFont(undefined, "normal");
+          y += 6;
+
+          (p.itens || []).forEach(item => {
+            doc.text(item.nome || "-", 10, y);
+            doc.text(String(item.quantidade || "-"), 100, y);
+            doc.text(`R$ ${item.totalItem != null ? item.totalItem.toFixed(2) : "-"}`, 140, y);
+            y += 6;
+          });
+
+          doc.setFont(undefined, "bold");
+          doc.text(`Valor Total: R$ ${p.valorTotal != null ? p.valorTotal.toFixed(2) : "-"}`, 10, y);
+          doc.setFont(undefined, "normal");
+          y += 10;
+
+          if (y > 280) {
+            doc.addPage();
+            y = 20;
+          }
+        });
+      }
+    }
 
     const blob = doc.output("blob");
-    const pdfUrl = URL.createObjectURL(blob);
-    window.open(pdfUrl); 
-    return pdfUrl;
+    const url = URL.createObjectURL(blob);
+    window.open(url, "_blank");
+    return url;
   }
 
   function enviarWhatsApp(pdfUrl) {
-    const msg = encodeURIComponent("Segue o relatório dos pedidos do sistema.");
-    window.open(`https://wa.me/?text=${msg}%0A${pdfUrl}`, "_blank");
+    const msg = encodeURIComponent("Segue o relatório dos pedidos do sistema ZeroHora.");
+    window.open(`https://wa.me/?text=${msg}`, "_blank");
   }
 
   function gerarOuEnviar() {
@@ -69,6 +127,8 @@ export default function GeneralInformation() {
 
     const querEnviar = window.confirm("Deseja enviar o PDF pelo WhatsApp?");
     const pdfUrl = gerarPDF();
+
+    if (!pdfUrl) return; // se não gerou PDF (msgConcluidos/msgEmProgresso), sai
 
     if (querEnviar) {
       setTimeout(() => enviarWhatsApp(pdfUrl), 1000);
@@ -84,20 +144,26 @@ export default function GeneralInformation() {
         <img src={Share} alt="Compartilhar" className="share invert" onClick={gerarOuEnviar} />
       </div>
 
-      <div className="cotent2">
-        <div className="cot1"><h2>43</h2><p>Entradas</p></div>
-        <div className="cot2"><h2>2</h2><p>Saídas</p></div>
-      </div>
-
       <div className="cotent3">
         {[
-          { label: "pedidos", valor: pedidos, checked: msgPedidos, setChecked: setMsgPedidos },
-          { label: "concluídos", valor: pedConcluidos, checked: msgConcluidos, setChecked: setMsgConcluidos },
-          { label: "em progresso", valor: pedidosProgreso, checked: msgEmProgresso, setChecked: setMsgEmProgresso }
+          { label: "Entradas", valor: pedidos, checked: msgPedidos, setChecked: setMsgPedidos },
+          { label: "Saídas", valor: pedConcluidos, checked: msgConcluidos, setChecked: setMsgConcluidos },
+          { label: "Alterações", valor: pedidosProgreso, checked: msgEmProgresso, setChecked: setMsgEmProgresso }
         ].map((item, i) => (
           <div key={i} className="tent1">
             <label className="customRadio">
-              <input type="checkbox" checked={item.checked} onChange={() => item.setChecked(!item.checked)} />
+              <input
+                type="checkbox"
+                checked={item.checked}
+                onChange={() => {
+                  if (item.label === "Saídas" || item.label === "Alterações") {
+                    toast.error("Trabalhando nisso!");
+                    item.setChecked(false); 
+                  } else {
+                    item.setChecked(!item.checked); 
+                  }
+                }}
+              />
               <span className="radioMark"></span>
             </label>
             <p>{item.valor}</p>

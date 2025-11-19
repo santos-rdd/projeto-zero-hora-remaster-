@@ -49,6 +49,18 @@ export default function CarouselQtd (props){
     }
     };
 
+    const itensFormatados = Object.entries(total).map(([id, dados]) => {
+    const itemOriginal = itensAd.find(i => i.id === id);
+
+    return {
+        id,
+        nome: itemOriginal ? itemOriginal.item : "Item desconhecido",
+        quantidade: dados.quantidade,
+        totalItem: dados.totalItem
+    };
+});
+
+
     return (
                         <div className="containerItems">
                             <div className="containerCarousel">
@@ -93,7 +105,7 @@ export default function CarouselQtd (props){
                                     <p className="sumAll"> 
                                         R${totalPedido.toFixed(2)}
                                     </p>
-                                    <p className="total">                    {totalProdutos} Produtos</p>
+                                    <p className="total"> {totalProdutos} Produtos</p>
                                 </div>
 
 
@@ -106,14 +118,14 @@ export default function CarouselQtd (props){
                                             toast.error("Adicione pedidos antes de confirmar!");
                                             } else {
                                             confirmar();
-                                            setState(true);
-                                            }
+                                            props.confirmarPedido(totalPedido, itensFormatados);                                            }
                                           }}
                                         >
                                             Confirmar 
                                         </button>
 
-                                        <button className="btnAll btn2">
+                                        <button className="btnAll btn2"
+                                        >
                                             Cancelar
                                         </button>
                                 </div>

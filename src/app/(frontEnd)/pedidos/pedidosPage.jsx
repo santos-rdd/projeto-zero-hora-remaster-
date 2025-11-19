@@ -22,6 +22,9 @@ import { useNavigate } from "react-router-dom";
 import validator from "validator";
 
 export default function Pedidos() {
+
+    const cod = "3000 und. folhas A5 150g";
+    const ban = "2 und. Banner Lona 90g 120 cm";
    const {
     tremeNome,
     tremeCpf,
@@ -40,7 +43,11 @@ export default function Pedidos() {
     setEmailCliente,
     setTelefoneCliente,
     iniciarPedido,
-    confirmarPedido
+    confirmarPedido,
+    numeroPedido,
+    valorFinal,
+    itensFinal,
+    listaPedidos,
   } = useLogicaPedidos();
 
   return (
@@ -72,13 +79,28 @@ export default function Pedidos() {
             </div>
 
             <ItemExpedidos
-              info1="Num.\n do Pedido"
-              info2="Fornecedor"
-              info3="Data"
-              info4="Valor"
-            >
-              <ItemRowPedidos />
+                info1="Nº Pedido"
+                info2="Cliente"
+                info3="Data"
+                info4="Valor"
+                >
+
+                {listaPedidos && listaPedidos.length > 0 ? (
+                    listaPedidos.map(p => (
+                        <ItemRowPedidos
+                            key={p.numeroPedido}
+                            numero={p.numeroPedido}
+                            cliente={p.cliente?.nome || "Cliente desconhecido"}
+                            data={p.criadoEm?.seconds ? new Date(p.criadoEm.seconds * 1000).toLocaleDateString("pt-BR") : "Data não disponível"}
+                            valor={p.valorTotal || 0}
+                        />
+
+                    ))
+                ) : (
+                    <p style={{ padding: "10px" }}>Procurando pedidos...</p>
+                )}
             </ItemExpedidos>
+
           </div>
         </div>
 
@@ -127,8 +149,8 @@ export default function Pedidos() {
         // -------- TELA 3 --------
         <div className="divCustom">
           <div className="searchArea">
-            <h1>Pedidos N°00001</h1>
-            <p className="pS">R$ 0,00</p>
+            <h1>Pedidos N°{numeroPedido}</h1>
+            <p className="pS">R$ {valorFinal.toFixed(2)}</p>
             <img
               className="adapt1 tranform"
               src={Back}
@@ -138,23 +160,31 @@ export default function Pedidos() {
             <Relatorio />
             <div className="contInp">
               <h2>Cliente</h2>
-              <textarea
-                placeholder={`Nome: ${nomeCliente}\nEmail: ${emailCliente}\nTelefone: ${telefoneCliente}`}
-                className="allInp clientInfo"
-                rows="5"
-              />
+
+             <div className="clienteDiv"
+             placeholder={`Nome: Alessandro\nE-mail: alessandro@gmail.com\nTelefone: (35) 9 9999-9999`}>
+                <p>Nome: {nomeCliente} </p>
+                <p>E-mail: {emailCliente} </p>
+                <p>Telefone: {telefoneCliente} </p>
+             </div>
+
               <h2>Itens do Pedido</h2>
-              <textarea
-                placeholder="-Itens adicionados aparecerão aqui-"
-                className="allInp clientInfo"
-                rows="5"
-              />
+              <div className="clienteDiv"
+             placeholder={`Nome: Alessandro\nE-mail: alessandro@gmail.com\nTelefone: (35) 9 9999-9999`}>
+                {itensFinal.map(item => (
+                    <p key={item.id}>
+                        {item.nome} — {item.quantidade} un — R${item.totalItem.toFixed(2)}
+                    </p>
+                ))}
+             </div>
+
               <button className="btnExtrato" onClick={() => toast("Ainda não implementado")}>
                 Confirmar Pedido
               </button>
             </div>
           </div>
         </div>
+
       )}
 
       <BottomNav />
