@@ -2,6 +2,10 @@
     width: 100%;
     height: 800px;
 }
+.divCustom1 {
+    width: 100%;
+    height: 750px;
+}
 
 .searchArea {
     display: flex;
@@ -89,6 +93,7 @@
     
     padding-bottom: 25px;
     height: auto;
+    gap: 5px;
 }
 
 .allInp{
@@ -106,7 +111,7 @@
 }
 
 .contInp h2{
-    margin-right: auto;
+    margin-right: 70%;
     font-size: 0.9rem;
 }
 

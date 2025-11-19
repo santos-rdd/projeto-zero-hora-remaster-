@@ -6,6 +6,7 @@ import Relatorio from "../../components/relatorio";
 import ItemExpedidos from "../../components/itemExpedidos";
 import ItemRowPedidos from "../../components/itemRowPedidos";
 
+
 /* Hooks personalizados */
 import { useLogicaPedidos } from "../../(backEnd)/hooks/useLogicaPedidos";
 
@@ -19,13 +20,17 @@ import "./pedidosPage.css";
 import { toast } from "react-hot-toast";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { updateDoc, arrayUnion } from "firebase/firestore";
 import validator from "validator";
+
 
 export default function Pedidos() {
 
+    const [filtros, setFiltros] = useState({ busca: "", valorMax: "" });
+
     const cod = "3000 und. folhas A5 150g";
     const ban = "2 und. Banner Lona 90g 120 cm";
-   const {
+    const {
     tremeNome,
     tremeCpf,
     pag1,
@@ -48,13 +53,15 @@ export default function Pedidos() {
     valorFinal,
     itensFinal,
     listaPedidos,
+    setItensFinal,
+    setValorFinal 
   } = useLogicaPedidos();
 
   return (
     <>
       {pag1 ? (
         // -------- TELA 1 --------
-        <div className="divCustom">
+        <div className="divCustom1">
           <div className="searchArea">
             <h1>Novo Pedido</h1>
             <div className="contInp">
@@ -107,43 +114,48 @@ export default function Pedidos() {
       ) : !state ? (
         // -------- TELA 2 --------
         <div className="divCustom">
-          <div className="searchArea">
-            <h1>Pedidos</h1>
-            <img
-              className="adapt1 tranform"
-              src={Back}
-              alt="Voltar"
-              onClick={() => setPage1(true)}
-            />
-            <div className="contInp">
-              <h2>Solicitação</h2>
-              <div className="inputGroup">
-                <input
-                  type="text"
-                  placeholder="Nome: Fernando Augusto"
-                  value={nomeCliente}
-                  onChange={e => setNomeCliente(e.target.value)}
-                />
-                <input
-                  type="email"
-                  placeholder="E-mail: fernando@hotmail.com"
-                  value={emailCliente}
-                  onChange={e => setEmailCliente(e.target.value)}
-                />
-                <input
-                  type="text"
-                  placeholder="Telefone: (35) 9 9999-9999"
-                  value={telefoneCliente}
-                  onChange={e => setTelefoneCliente(e.target.value)}
-                />
-              </div>
+        <div className="searchArea">
+          <h1>Pedidos</h1>
+          <img
+            className="adapt1 tranform"
+            src={Back}
+            alt="Voltar"
+            onClick={() => setPage1(true)}
+          />
 
-              <EstoqueAlt />
+          <div className="contInp">
+            <h2>Solicitação</h2>
+            <div className="inputGroup">
+              <input
+                type="text"
+                placeholder="Nome: Fernando Augusto"
+                value={nomeCliente}
+                onChange={e => setNomeCliente(e.target.value)}
+              />
+              <input
+                type="email"
+                placeholder="E-mail: fernando@hotmail.com"
+                value={emailCliente}
+                onChange={e => setEmailCliente(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Telefone: (35) 9 9999-9999"
+                value={telefoneCliente}
+                onChange={e => setTelefoneCliente(e.target.value)}
+              />
             </div>
 
-            <CarouselQtd setState={setState} confirmarPedido={confirmarPedido} />
+            <EstoqueAlt setFiltro={setFiltros} />
           </div>
+
+          <CarouselQtd
+            filtros={filtros}
+            confirmarPedido={confirmarPedido}
+            setState={setState}
+          />
         </div>
+      </div>
 
       ) : (
         // -------- TELA 3 --------
@@ -160,25 +172,34 @@ export default function Pedidos() {
             <Relatorio />
             <div className="contInp">
               <h2>Cliente</h2>
-
-             <div className="clienteDiv"
-             placeholder={`Nome: Alessandro\nE-mail: alessandro@gmail.com\nTelefone: (35) 9 9999-9999`}>
+              <div className="clienteDiv">
                 <p>Nome: {nomeCliente} </p>
                 <p>E-mail: {emailCliente} </p>
                 <p>Telefone: {telefoneCliente} </p>
-             </div>
+              </div>
 
               <h2>Itens do Pedido</h2>
-              <div className="clienteDiv"
-             placeholder={`Nome: Alessandro\nE-mail: alessandro@gmail.com\nTelefone: (35) 9 9999-9999`}>
+              <div className="clienteDiv">
                 {itensFinal.map(item => (
-                    <p key={item.id}>
-                        {item.nome} — {item.quantidade} un — R${item.totalItem.toFixed(2)}
-                    </p>
+                  <p key={item.id}>
+                    {item.nome} — {item.quantidade} un — R${item.totalItem.toFixed(2)}
+                  </p>
                 ))}
-             </div>
+              </div>
 
-              <button className="btnExtrato" onClick={() => toast("Ainda não implementado")}>
+              <button
+                className="btnExtrato"
+                onClick={() => {
+                  toast.success("Pedido confirmado!");
+                  setPage1(true);
+                  setState(false);
+                  setNomeCliente("");
+                  setEmailCliente("");
+                  setTelefoneCliente("");
+                  setItensFinal([]);
+                  setValorFinal(0);
+                }}
+              >
                 Confirmar Pedido
               </button>
             </div>

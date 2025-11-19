@@ -1,7 +1,7 @@
 .itensExpedidos {
     width: 100%;
-    min-height: 300px;
-    max-height: 300px;
+    min-height: 350px;
+    max-height: 350px;
 
     justify-content: flex-start;
     border: 1px solid #ccc;
@@ -51,7 +51,7 @@
 }
 
 .carouselVertical {
-    max-height: 237px;
+    max-height: 280px;
     overflow-y: auto;
     scrollbar-width: thin;
 }

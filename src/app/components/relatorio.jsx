@@ -10,12 +10,12 @@ export default function Relatorio(props){
             <div className="conteinerInfos1">
                     <div className="allInfos info1">
                         <p>Criado: </p>
-                        <p>28/09/2025</p>
+                        <p>Agora</p>
                     </div>
                     
                     <div className="allInfos info2">
                         <p>Aprovado: </p>
-                        <p>28/09/2025</p>
+                        <p>Agora</p>
                     </div>
 
                     <div className="allInfos info3">
@@ -30,7 +30,7 @@ export default function Relatorio(props){
 
                     <div className="allInfos info5">
                         <p>Entregue: </p>
-                        <p>30/09/2025</p>
+                        <p>Pendente</p>
                     </div>
             </div>
 

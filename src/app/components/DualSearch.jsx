@@ -4,47 +4,57 @@ import { useState } from "react";
 
 export default function DualSearch(props){
 
-  const[tremedinha, setTreme] = useState("");
-  const title = props.title;
-  const btnAtt = props.btnAtt;
+  const [tremedinha, setTreme] = useState("");
+  const [name, setName] = useState("");
+  const [cod, setCod] = useState("");
 
-  function tost(){
-    if(!name || !cod){
+  function buscar() {
+    if (!name && !cod) {
       toast.error("Preencha os itens para fazer uma busca!");
       setTreme("treme");
-        setTimeout(()=>{
-          setTreme("");
-        },500);
+      setTimeout(()=>setTreme(""),500);
+      return;
     }
+
+    if (props.onBuscar) props.onBuscar(name, cod);
   }
 
-  const [ name, setName ] = useState("");
-  const [ cod, setCod ] = useState("");
+  function limpar() {
+    setName("");
+    setCod("");
+    if (props.onLimpar) props.onLimpar();
+  }
 
-    return (
-        <div>
-          <p className="pBuscar">{ title }</p>
+  return (
+    <>
+      <p className="pBuscar">{ props.title }</p>
 
-            <div className="campoBusca flex">
+      <div className="campoBusca flex">
+        <input 
+          className={`nomeProduto ${tremedinha}`}
+          type="text"
+          placeholder="Item"
+          value={name}
+          onChange={e => setName(e.target.value)}
+        />
+        <p>ou</p>
+        <input 
+          className={`buscaCodigo ${tremedinha}`}
+          type="text"
+          placeholder="Código"
+          value={cod}
+          onChange={e => setCod(e.target.value)}
+        />
+      </div>
 
-                <input className={`nomeProduto ${tremedinha}`}
-                type="text" name="Nome" id="Nome" value={name}
-                placeholder="Item" 
-                onChange={n => setName(n.target.value)}
-                />
-
-                <p>ou</p>
-
-                <input className={`buscaCodigo ${tremedinha}`}
-                type="text" name="Codigo" id="Codigo" value={cod}
-                placeholder="Codigo" 
-                onChange={c => setCod(c.target.value)}/>
-            </div>
-
-            <button className={`buscarCodigo ${btnAtt ? "" : "invisivel"}`}
-            onClick={()=>tost()}>
-              Buscar
-            </button>
-        </div>
-    )
+      <div className="botoesBusca">
+        <button className="buscarCodigo" onClick={buscar}>
+          Buscar
+        </button>
+        <button className="limparFiltro" onClick={limpar}>
+          Limpar Filtro
+        </button>
+      </div>
+    </>
+  );
 }
