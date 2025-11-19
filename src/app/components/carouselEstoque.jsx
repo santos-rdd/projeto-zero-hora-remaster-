@@ -1,5 +1,5 @@
 import "./carouselEstoque.css";
-import RowEstoque from "../components/RowEstoque";
+import RowEstoque from "../components/rowEstoque";
 import { useDatabase } from "../(backEnd)/hooks/useDatabase";
 import { db } from "../(backEnd)/firebaseAdm";
 import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
