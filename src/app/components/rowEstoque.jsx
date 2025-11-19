@@ -1,4 +1,4 @@
-import "./RowEstoque.css";
+import "./rowEstoque.css";
 import { useState, useEffect } from "react";
 
 export default function RowEstoque({ cod, item, totalFisico, onChange, quantidadeAlterada }) {
