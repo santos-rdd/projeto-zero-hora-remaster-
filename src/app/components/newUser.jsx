@@ -63,13 +63,13 @@ export default function NewUser(props) {
         aprovado: false,
       });
 
-      const link = `http://localhost:5173/approve?email=${email}&token=${token}`;
+    const link = `https://projeto-zero-hora-remaster.vercel.app/approve?email=${email}&token=${token}`;
 
       await emailjs.send(
         "service_f4vku98",
         "template_54qh7cd",
         {
-          to_email: "emaildoadm@exemplo.com",
+          to_email: "rodriguespt59@gmail.com, samidzerohora@gmail.com",
           link,
           email_usuario: email,
         },
