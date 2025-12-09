@@ -9,7 +9,6 @@
 }
 
 .history{
-    background-color: orange;
     padding: 7px 20px 7px 20px;
     width: 260px;
 }
@@ -24,6 +23,35 @@
 
     font-size: 0.8rem;
 }
+
+/* Primeiro e segundo botão */
+
+.oneButtons2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: row;
+    gap: 20px;
+}
+
+.history2{
+    padding: 13px 20px 13px 20px;
+    width: 260px;
+}
+
+.all2{
+    border: none;
+    border-radius: 25px;
+    background-color: black;
+
+    color: white;
+    margin-top: 20px;
+
+    font-size: 0.8rem;
+}
+
+/* Estilização dos botões */
 
 .along{
     height: 750px;
@@ -53,3 +81,57 @@
     height: 30px;
 }
 
+.type1{
+    background-color: none;
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+    width: 100%;
+    height: auto;
+
+    flex-direction: row;
+    gap: 10px;
+}
+
+.type2{
+    background-color: none;
+    display: flex;
+    justify-content: center;
+    
+    align-items: center;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+}
+
+.allTypes{
+    width: 100%;
+    margin-bottom: 15px;
+    flex: 1;
+
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.inputAdd1{
+    width: 50%;
+}
+
+.btnEstoquePage{
+    margin-top: 10px;
+    border-radius: 30px;
+    width: 182px;
+
+    height: 40px;
+    padding: 10px;
+    background-color: #FFCC2A;
+
+    border: none;
+    font-weight: bold;
+}
+
+.btnPedidoAdd{
+    width: 100%;
+}
