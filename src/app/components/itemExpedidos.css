@@ -1,7 +1,7 @@
 .itensExpedidos {
     width: 100%;
-    min-height: 350px;
-    max-height: 350px;
+    min-height: 360px;
+    max-height: 360px;
 
     justify-content: flex-start;
     border: 1px solid #ccc;

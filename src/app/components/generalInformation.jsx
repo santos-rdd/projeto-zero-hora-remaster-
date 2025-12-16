@@ -49,7 +49,7 @@ export default function GeneralInformation() {
     doc.text("Relatório de Pedidos - ZeroHora", 10, 15);
 
     // Ícone da ZeroHora no canto superior direito
-    doc.addImage(ZeroHoraBase64, "PNG", 160, 10, 40, 20);
+    doc.addImage(ZeroHoraBase64, "PNG", 160, 10, 30, 30);
 
     let y = 30;
     doc.setFontSize(12);

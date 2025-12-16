@@ -10,14 +10,13 @@ import ItemExpedidos from "../../components/itemExpedidos";
 import ItemRow from "../../components/itemRow";
 
 /* Imports */
+import Modal from "react-modal";
 import { useDatabase } from "../../(backEnd)/hooks/useDatabase";
 import { useState } from "react";
-import { toast } from "react-hot-toast";
+import { useEffect } from "react";
 import { useSalvarMovimentacao } from "../../(backEnd)/hooks/useSalvarMovimentacao";
-import Modal from "react-modal";
+import { toast } from "react-hot-toast";
 import { useDeletePedido } from "../../(backEnd)/hooks/useDeletePedido";
-
-
 
 export default function Movimentacoes() {
 
@@ -51,7 +50,6 @@ export default function Movimentacoes() {
 
     const [modalOpen, setModalOpen] = useState(false);
     const [itemToDelete, setItemToDelete] = useState(null);
-
     
     // Estados da página 3
     const [inpFornecedor3, setInpFornecedor3] = useState("");
@@ -59,6 +57,21 @@ export default function Movimentacoes() {
     const [inpItem3, setInpItem3] = useState("");
     const [inpQtd3, setInpQtd3] = useState("");
     const [ prodConf, setProd ] = useState("Não conferido");
+    
+    useEffect(() => {
+        if (page2 === 4) {
+            toast("Clique em um item para expedi-lo!", {
+                id: "expedicao-info",
+                style: {
+                    background: "orange",
+                    color: "black"
+                },
+                duration: 3000
+            });
+        } else {
+            toast.dismiss("expedicao-info");
+        }
+    }, [page2]);
 
     function btnFunction() {
         if (ativado1) {
@@ -150,6 +163,7 @@ export default function Movimentacoes() {
         setModalOpen(false);
         setItemToDelete(null);
     }
+
 
 
     return (

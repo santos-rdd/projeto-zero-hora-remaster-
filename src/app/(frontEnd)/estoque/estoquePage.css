@@ -54,11 +54,11 @@
 /* Estilização dos botões */
 
 .along{
-    height: 750px;
+    height: 850px;
 }
 
 .along1{
-    height: 600px;
+    height: 850px;
     padding: 20px 20px 20px 20px;
     display: flex;
 
@@ -75,7 +75,7 @@
 .adapt{
     position: absolute;
     top: 33px;
-    left: 40px;
+    left: 25px;
 
     width: 30px;
     height: 30px;
