@@ -1,4 +1,3 @@
-/* Componentes */
 import BottomNav from "../../components/bottomNav";
 import CarouselQtd from "../../components/carouselQtd";
 import EstoqueAlt from "../../components/estoqueAlt";
@@ -6,17 +5,12 @@ import Relatorio from "../../components/relatorio";
 import ItemExpedidos from "../../components/itemExpedidos";
 import ItemRowPedidos from "../../components/itemRowPedidos";
 
-
-/* Hooks personalizados */
 import { useLogicaPedidos } from "../../(backEnd)/hooks/useLogicaPedidos";
 
-/* Icones */
 import Back from "../../../assets/images/icons/back.png";
 
-/* Estilos */
 import "./pedidosPage.css";
 
-/* Bibliotecas */
 import { toast } from "react-hot-toast";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -60,7 +54,6 @@ export default function Pedidos() {
   return (
     <>
       {pag1 ? (
-        // -------- TELA 1 --------
         <div className="divCustom1">
           <div className="searchArea">
             <h1>Novo Pedido</h1>
@@ -112,7 +105,6 @@ export default function Pedidos() {
         </div>
 
       ) : !state ? (
-        // -------- TELA 2 --------
         <div className="divCustom">
         <div className="searchArea">
           <h1>Pedidos</h1>
@@ -158,7 +150,6 @@ export default function Pedidos() {
       </div>
 
       ) : (
-        // -------- TELA 3 --------
         <div className="divCustom">
           <div className="searchArea">
             <h1>Pedidos N°{numeroPedido}</h1>

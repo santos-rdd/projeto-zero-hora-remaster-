@@ -1,4 +1,3 @@
-/* Container principal */
 .searchProducts {
     width: auto;
     height: auto;
@@ -10,7 +9,6 @@
     margin-left: 7px;
 }
 
-/* Container do input + ícone */
 .inpCont {
     position: relative;
     display: flex;
@@ -26,7 +24,6 @@
     height: 20px;
 }
 
-/* Input de quantidade */
 .qtdInp {
     border: 1px solid #8786819c;
     border-radius: 12px;
@@ -40,7 +37,6 @@
     height: 38px;
 }
 
-/* Botão buscar */
 .blackButton {
     background-color: black;
     color: white;

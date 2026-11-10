@@ -79,7 +79,6 @@ export function useLogicaPedidos() {
     try {
       const itensValidos = itens.filter(item => item.quantidade > 0);
 
-      // Gerar número do pedido como na versão antiga
       const pedidosSnapshot = await getDocs(collection(db, "pedidosCriados"));
       let nextNumber = (pedidosSnapshot.size + 1).toString().padStart(5, "0");
 
@@ -95,16 +94,13 @@ export function useLogicaPedidos() {
         criadoEm: criadoEmISO
       };
 
-      // Salvar em pedidosCriados
       await setDoc(doc(db, "pedidosCriados", nextNumber), pedidoData);
 
-      // Salvar ou atualizar cliente sem sobrescrever pedidos antigos
       const clienteRef = doc(db, "pedidosUsuarios", emailCliente);
       const q = query(collection(db, "pedidosUsuarios"), where("email", "==", emailCliente));
       const querySnapshot = await getDocs(q);
 
       if (querySnapshot.empty) {
-        // Novo cliente
         await setDoc(clienteRef, {
           nome: nomeCliente,
           email: emailCliente,
@@ -112,7 +108,6 @@ export function useLogicaPedidos() {
           pedidos: [pedidoData]
         });
       } else {
-        // Cliente existente: adiciona sem sobrescrever
         await updateDoc(clienteRef, {
           pedidos: arrayUnion(pedidoData)
         });

@@ -1,7 +1,5 @@
-/* Estilização */
 import "./estoquePage.css";
 
-/* Componentes */
 import BottomNav from "../../components/bottomNav";
 import DualSearch from "../../components/DualSearch";
 import CategoriaToggle from "../../components/categoriaToggle";
@@ -10,13 +8,11 @@ import ItemRow from "../../components/itemRow";
 import EstoqueAlt from "../../components/estoqueAlt";
 import CarouselEstoque from "../../components/carouselEstoque";
 
-/* importações-hooks-bibliotecas */
 import { useState } from "react";
 import { useDatabase } from "../../(backEnd)/hooks/useDatabase";
 import { toast } from "react-hot-toast";
 import { useCreatePedido } from "../../(backEnd)/hooks/useCreatePedido";
 
-/* Imagens */
 import Back from "../../../assets/images/icons/back.png";
 
 export default function Estoque() {
@@ -130,7 +126,6 @@ export default function Estoque() {
   return (
     <>
       { page === 1 && (
-        // -------- PÁGINA 1 --------
         <div className="along">
           <h1 className="title">Estoque</h1>
 
@@ -197,7 +192,6 @@ export default function Estoque() {
       
       
       { page === 2 && (
-        // -------- PÁGINA 2 --------
         <div className="along1">
           <h1 className="title">Criar Novo Pedido</h1>
 
@@ -268,7 +262,6 @@ export default function Estoque() {
 
 
         { page === 3 && (
-        // -------- PÁGINA 3 --------
         <div className="along1">
           <h1 className="title">Estoque</h1>
 

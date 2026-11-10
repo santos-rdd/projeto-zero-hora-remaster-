@@ -12,7 +12,6 @@ export default function CarouselQtd({ filtros, confirmarPedido }) {
   const [reset, setReset] = useState(false);
   const [carregando, setCarregando] = useState(false);
 
-  // Filtragem de itens
   const itensFiltrados = itensAd.filter(p => {
     const busca = filtros?.busca?.toLowerCase() || "";
     const valorMax = filtros?.valorMax;

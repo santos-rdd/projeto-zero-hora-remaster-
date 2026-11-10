@@ -37,6 +37,7 @@ export default function LoginForm() {
   }, []);
 
   const esperaLogin = async () => {
+    console.log(users)
     if (!users || users.length === 0) {
       toast.error("Carregando usuários...");
       return;

@@ -71,7 +71,7 @@
 
 
 .carouselSection > * {
-    flex: 0 0 calc(50% - 0.5rem);  /* dois itens por linha */
+    flex: 0 0 calc(50% - 0.5rem);
     box-sizing: border-box;
 }
 

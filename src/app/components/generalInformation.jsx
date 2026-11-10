@@ -5,7 +5,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import jsPDF from "jspdf";
-import ZeroHoraBase64 from "../../assets/images/icons/zeroHora.png"; // ícone funciona como antes
+import ZeroHoraBase64 from "../../assets/images/icons/zeroHora.png";
 
 export default function GeneralInformation() {
   const [pedidos, setPedidos] = useState(0);
@@ -41,14 +41,13 @@ export default function GeneralInformation() {
   function gerarPDF() {
     if (msgConcluidos || msgEmProgresso) {
       toast.error("Trabalhando nisso!");
-      return; // não gera PDF
+      return;
     }
 
     const doc = new jsPDF();
     doc.setFontSize(18);
     doc.text("Relatório de Pedidos - ZeroHora", 10, 15);
 
-    // Ícone da ZeroHora no canto superior direito
     doc.addImage(ZeroHoraBase64, "PNG", 160, 10, 30, 30);
 
     let y = 30;
@@ -128,7 +127,7 @@ export default function GeneralInformation() {
     const querEnviar = window.confirm("Deseja enviar o PDF pelo WhatsApp?");
     const pdfUrl = gerarPDF();
 
-    if (!pdfUrl) return; // se não gerou PDF (msgConcluidos/msgEmProgresso), sai
+    if (!pdfUrl) return;
 
     if (querEnviar) {
       setTimeout(() => enviarWhatsApp(pdfUrl), 1000);

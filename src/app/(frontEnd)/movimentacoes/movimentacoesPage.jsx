@@ -1,15 +1,11 @@
-/* CSS */ 
 import "./movimentacoesPage.css";
 
-/* Imagens */
 import Back from "../../../assets/images/icons/back.png";
 
-/* Componentes */ 
 import BottomNav from "../../components/bottomNav";
 import ItemExpedidos from "../../components/itemExpedidos";
 import ItemRow from "../../components/itemRow";
 
-/* Imports */
 import Modal from "react-modal";
 import { useDatabase } from "../../(backEnd)/hooks/useDatabase";
 import { useState } from "react";
@@ -51,7 +47,6 @@ export default function Movimentacoes() {
     const [modalOpen, setModalOpen] = useState(false);
     const [itemToDelete, setItemToDelete] = useState(null);
     
-    // Estados da página 3
     const [inpFornecedor3, setInpFornecedor3] = useState("");
     const [inpCodigo3, setInpCodigo3] = useState("");
     const [inpItem3, setInpItem3] = useState("");
@@ -84,7 +79,6 @@ export default function Movimentacoes() {
         }
     }
 
-    // Filtro
     const itensFiltrados = itens.filter(i => {
         const fornecedorMatch = (i.fornecedor || "").toLowerCase().includes(inpFornecedor.toLowerCase());
         const codMatch = (i.cod || "").toLowerCase().includes(inpCod.toLowerCase());
@@ -101,7 +95,6 @@ export default function Movimentacoes() {
         }
     });
 
-    // filtro pagina 4
     const itensFiltradosPag4 = itens.filter(i => {
         const codMatch = i.cod.toLowerCase().includes(f4Cod.toLowerCase());
         const itemMatch = i.item.toLowerCase().includes(f4Item.toLowerCase());

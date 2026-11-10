@@ -16,12 +16,10 @@ export default function RowEstoque({ cod, item, totalFisico, onChange, quantidad
     return novo;
   });
 
-  // Atualiza quantidade se a alteração for resetada pelo pai
   useEffect(() => {
     setQuantidade(quantidadeAlterada || 0);
   }, [quantidadeAlterada]);
 
-  // notifica o pai quando montar
   useEffect(() => {
     onChange(cod, quantidade);
   }, []);

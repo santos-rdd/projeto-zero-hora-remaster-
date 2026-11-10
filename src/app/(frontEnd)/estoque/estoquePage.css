@@ -24,8 +24,6 @@
     font-size: 0.8rem;
 }
 
-/* Primeiro e segundo botão */
-
 .oneButtons2{
     display: flex;
     justify-content: center;
@@ -50,8 +48,6 @@
 
     font-size: 0.8rem;
 }
-
-/* Estilização dos botões */
 
 .along{
     height: 850px;

@@ -13,7 +13,6 @@
     position: relative;
 }
 
-/*  Imagem da logo */
 .LogoImg {
     width: 110px;
     height: 100px;
@@ -171,11 +170,6 @@
     opacity: 1;
 }
 
-
-/* ----------------------------------------------------------------*/
-/* Correções de estilo */
-/* Para tablets */
-
 @media(min-width: 768px) and (max-width:1024px){
     
 .contentLogo {
@@ -191,11 +185,6 @@
     padding-top: 20%;
 }    
 }
-
-
-/* ----------------------------------------------------------------*/
-
-/* Tela grande */
 
 .divz{
     position: fixed;

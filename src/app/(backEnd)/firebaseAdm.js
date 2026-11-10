@@ -2,9 +2,9 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 export const firebaseApp = {
-  apiKey: "AIzaSyA0cWzUiDNi5jp-GHLEpG6S3sTcxAr9xCY",
-  authDomain: "zerohora-f4016.firebaseapp.com",
-  projectId: "zerohora-f4016",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
 };
 
 const app = initializeApp(firebaseApp);

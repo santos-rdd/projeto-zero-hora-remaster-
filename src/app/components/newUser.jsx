@@ -24,7 +24,6 @@ export default function NewUser(props) {
   const setSenha = props.setSenha;
   const setMostrarSenha = props.setMostrarSenha;
 
-  // Função de registro com aprovação via email
   async function registrarNovoUsuario() {
     if (!email || !senha) {
       toast.error("Preencha todos os campos!");
@@ -42,11 +41,9 @@ export default function NewUser(props) {
     }
 
     try {
-      // Gera hash da senha antes de salvar
       const salt = await bcrypt.genSalt(10);
       const senhaHash = await bcrypt.hash(senha, salt);
 
-      // Verifica se já existe um usuário pendente ou aprovado com esse email
       const pendentes = await getDocs(collection(db, "pendingUsers"));
       const existePendente = pendentes.docs.find((d) => d.data().email === email);
 
@@ -58,22 +55,27 @@ export default function NewUser(props) {
       const token = Math.random().toString(36).substring(2, 12);
       await addDoc(collection(db, "pendingUsers"), {
         email,
-        senha: senhaHash, // salva o hash, não a senha original
+        senha: senhaHash,
         token,
         aprovado: false,
       });
 
-    const link = `https://projeto-zero-hora-remaster.vercel.app/approve?email=${email}&token=${token}`;
+      const baseUrl = import.meta.env.VITE_APP_URL || window.location.origin;
+      const link = `${baseUrl}/approve?email=${email}&token=${token}`;
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      const toEmail = import.meta.env.VITE_EMAILJS_TO_EMAIL || "rodriguespt59@gmail.com, samidzerohora@gmail.com";
 
       await emailjs.send(
-        "service_f4vku98",
-        "template_54qh7cd",
+        serviceId,
+        templateId,
         {
-          to_email: "rodriguespt59@gmail.com, samidzerohora@gmail.com",
+          to_email: toEmail,
           link,
           email_usuario: email,
         },
-        "LFrcg3QkMCeJ0c1FT"
+        publicKey
       );
 
       toast.success("Seu pedido foi enviado para aprovação!");
@@ -83,7 +85,6 @@ export default function NewUser(props) {
     }
   }
 
-  // Função para recuperar senha
   async function recuperarSenha() {
     if (!email) {
       toast.error("Digite seu email!");
