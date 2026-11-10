@@ -1,16 +1,43 @@
-# React + Vite
+# 📦 zeroHora — Sistema de Controle de Estoque (Gráfica)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O **zeroHora** é um sistema de gestão interna de estoque e controle operacional desenvolvido para uma empresa do setor gráfico e comunicação visual (impressões, estampas, cartazes e placas). 
 
-Currently, two official plugins are available:
+Trata-se de um projeto histórico criado no **início da minha graduação**, desenvolvido para atender a um cenário real. O objetivo do sistema era facilitar o cadastro, a consulta e o controle de insumos e produtos por parte dos funcionários da gráfica.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> **Interface Otimizada para Mobile:** A aplicação foi projetada e dimensionada para uso na tela de dispositivos móveis através do navegador.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tecnologias Utilizadas
 
-## Expanding the ESLint configuration
+- **Front-end:** React.js + Vite (com HMR)
+- **Estilização:** CSS / Tailwind CSS
+- **Back-end & Banco de Dados:** Node.js integrado com **Firebase** (Firestore / Auth)
+- **Serviços de E-mail:** EmailJS (Integração legacy)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ⚠️ Transparência Técnica & Limitações Conhecidas
+
+Por ter sido um dos meus primeiros projetos completos no ecossistema Web/React, o repositório reflete minhas etapas iniciais de aprendizado. Ele possui dívidas técnicas e características arquiteturais específicas que optei por manter como registro do meu processo de evolução:
+
+1. **Arquitetura Monolítica no Front-end:** O código do back-end (funções do Node/Firebase) roda diretamente acoplado ao front-end. Não há uma API REST externa separada por camadas como `controllers`, `models` ou `routes`.
+2. **Autenticação & Rotas:** O sistema de validação de usuários possui instabilidades nas proteções de rota.
+   - **Acesso direto:** Para navegar e testar a aplicação sem passar pela barreira de login, acesse a rota `/home` diretamente na URL do navegador (ex: `http://localhost:5173/home`).
+3. **Segurança & Variáveis de Ambiente:** Em versões anteriores, o projeto contava com chaves de API declaradas em *hardcode*. Algumas correções foram aplicadas para ocultar credenciais, mas ainda requer refatoração completa para uso estrito de `.env`.
+4. **Envio de E-mails (EmailJS):** A funcionalidade de cadastro/recuperação de senha por e-mail via EmailJS encontra-se temporariamente inoperante devido a limites do serviço.
+5. **Tela de Pedidos:** A visualização de pedidos possui um bug conhecido que causa falhas no carregamento de dados. A correção está prevista para refinamentos futuros.
+
+---
+
+## 🚀 Como Executar o Projeto Localmente
+
+### Pré-requisitos
+- **Node.js** instalado na máquina (versão 16+ recomendada).
+- Gerenciador de pacotes **npm**.
+
+### Passo a Passo
+
+1. **Clone o repositório:**
+   ```bash
+   git clone [https://github.com/santos-rdd/projeto-zero-hora.git](https://github.com/santos-rdd/projeto-zero-hora.git)
