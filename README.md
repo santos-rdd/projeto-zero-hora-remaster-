@@ -22,8 +22,8 @@ Trata-se de um projeto histórico criado no **início da minha graduação**, de
 Por ter sido um dos meus primeiros projetos completos no ecossistema Web/React, o repositório reflete minhas etapas iniciais de aprendizado. Ele possui dívidas técnicas e características arquiteturais específicas que optei por manter como registro do meu processo de evolução:
 
 1. **Arquitetura Monolítica no Front-end:** O código do back-end (funções do Node/Firebase) roda diretamente acoplado ao front-end. Não há uma API REST externa separada por camadas como `controllers`, `models` ou `routes`.
-2. **Autenticação & Rotas:** O sistema de validação de usuários possui instabilidades nas proteções de rota.
-   - **Acesso direto:** Para navegar e testar a aplicação sem passar pela barreira de login, acesse a rota `/home` diretamente na URL do navegador (ex: `http://localhost:5173/home`).
+2. **Autenticação & Acesso:** A validação de login está **temporariamente desativada**. É possível acessar o sistema apenas clicando diretamente no botão **"Entrar"** na tela de login. 
+   - *Nota:* Devido a essa alteração temporária, podem ocorrer instabilidades do lado do banco de dados (como requisições bloqueadas por regras de segurança/permissão). Essas pendências serão corrigidas em breve.
 3. **Segurança & Variáveis de Ambiente:** Em versões anteriores, o projeto contava com chaves de API declaradas em *hardcode*. Algumas correções foram aplicadas para ocultar credenciais, mas ainda requer refatoração completa para uso estrito de `.env`.
 4. **Envio de E-mails (EmailJS):** A funcionalidade de cadastro/recuperação de senha por e-mail via EmailJS encontra-se temporariamente inoperante devido a limites do serviço.
 5. **Tela de Pedidos:** A visualização de pedidos possui um bug conhecido que causa falhas no carregamento de dados. A correção está prevista para refinamentos futuros.
