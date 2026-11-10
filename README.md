@@ -1,6 +1,6 @@
 # 📦 zeroHora — Sistema de Controle de Estoque (Gráfica)
 
-O **zeroHora** é um sistema de gestão interna de estoque e controle operacional desenvolvido para uma empresa do setor gráfico e comunicação visual (impressões, estampas, cartazes e placas). 
+O **zeroHora** é um sistema de gestão interna de estoque e controle operacional desenvolvido como um projeto da faculdade para uma empresa real do setor gráfico e comunicação visual (impressões, estampas, cartazes e placas). 
 
 Trata-se de um projeto histórico criado no **início da minha graduação**, desenvolvido para atender a um cenário real. O objetivo do sistema era facilitar o cadastro, a consulta e o controle de insumos e produtos por parte dos funcionários da gráfica.
 
