@@ -11,7 +11,7 @@ Trata-se de um projeto histórico criado no **início da minha graduação**, de
 ## 🛠️ Tecnologias Utilizadas
 
 - **Front-end:** React.js + Vite (com HMR)
-- **Estilização:** CSS / Tailwind CSS
+- **Estilização:** CSS 
 - **Back-end & Banco de Dados:** Node.js integrado com **Firebase** (Firestore / Auth)
 - **Serviços de E-mail:** EmailJS (Integração legacy)
 
