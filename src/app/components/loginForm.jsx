@@ -37,47 +37,15 @@ export default function LoginForm() {
   }, []);
 
   const esperaLogin = async () => {
-    console.log(users)
-    if (!users || users.length === 0) {
-      toast.error("Carregando usuários...");
-      return;
-    }
-
-    if (!email || !senha) {
-      toast.error("Preencha todos os campos!");
-      setErro(true);
-      setTimeout(() => setErro(false), 1000);
-      return;
-    }
-
-    const userEncontrado = users.find((user) => user.email === email);
-
-    if (!userEncontrado) {
-      toast.error("Usuário não encontrado!");
-      setErro(true);
-      setTimeout(() => setErro(false), 1000);
-      return;
-    }
-
-    const senhaCorreta = await bcrypt.compare(senha, userEncontrado.senha);
-
-    if (!senhaCorreta) {
-      toast.error("Senha incorreta!");
-      setErro(true);
-      setTimeout(() => setErro(false), 1000);
-      return;
-    }
-
-    localStorage.setItem("userLogged", true);
-    localStorage.setItem("userEmail", userEncontrado.email);
-
-    setErro(false);
     setTimeout(() => {
       navigate("/home");
     }, 500);
   };
 
   const handleClick = () => {
+    toast.success('A area de login esta em correção, basta clicar no botão entrar para ser redirecionado a tela inicial!', {
+      duration: 8000
+    });
     setShowLoginCard(true);
   };
 
